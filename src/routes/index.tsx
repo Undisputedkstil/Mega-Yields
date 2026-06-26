@@ -177,16 +177,17 @@ function ImpactSection() {
             "Keeping people fed is our peace of mind."
           </h2>
           <p className="mt-5 max-w-md text-white/80">
-            Impact isn't a side project for us — it's the reason MegaYield exists. Every hectare
-            we expand creates jobs, apprenticeships, and food for communities around Winterveld.
+            Impact isn't a side project for us — it's part of how we measure success. We employ
+            seasonal workers from Winterveld and partner with Vuka Africa Youth Hub to donate
+            produce to local community members.
           </p>
         </div>
         <dl className="grid grid-cols-2 gap-8 self-end">
           {[
-            ["Local jobs", "Created and supported through every expansion phase"],
-            ["Apprenticeships", "Hands-on training for young agricultural workers"],
-            ["Food security", "Fresh produce reaching local markets and households"],
-            ["Land stewardship", "Responsible cultivation across 8 hectares"],
+            ["Local jobs", "Seasonal workers employed from the Winterveld community"],
+            ["Produce donation", "Partnered with Vuka Africa Youth Hub on community giving"],
+            ["Food security", "Fresh chillies and produce reaching local households"],
+            ["Future training", "Building toward apprenticeship programs as we scale"],
           ].map(([k, v]) => (
             <div key={k} className="border-l border-white/20 pl-5">
               <dt className="font-display text-xl text-[var(--color-gold)]">{k}</dt>
