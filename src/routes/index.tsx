@@ -204,8 +204,8 @@ function DualCTA() {
     <section className="container-x py-24 md:py-32">
       <div className="grid gap-6 md:grid-cols-2">
         {[
-          { to: "/funding", eyebrow: "For funders & investors", title: "See the investment case", body: "Business overview, growth trajectory, team credentials, and impact plan.", cta: "Funding & support" },
-          { to: "/contact", eyebrow: "For B2B buyers", title: "Talk supply partnerships", body: "Consistent volume, wholesale-grade produce, transparent operations — let's discuss.", cta: "Start a conversation" },
+          { to: "/contact", eyebrow: "For B2B buyers", title: "Talk supply partnerships", body: "Consistent volume, wholesale-grade chillies, transparent operations — let's discuss.", cta: "Start a conversation" },
+          { to: "/funding", eyebrow: "For investors & collaborators", title: "Explore growth partnerships", body: "Strategic investment, grant funding, equipment, land, and collaboration opportunities.", cta: "Partnership overview" },
         ].map((c) => (
           <Link
             to={c.to}
