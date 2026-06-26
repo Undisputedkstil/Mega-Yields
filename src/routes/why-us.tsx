@@ -1,0 +1,63 @@
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { SiteNav } from "@/components/SiteNav";
+import { SiteFooter } from "@/components/SiteFooter";
+import { PageHeader } from "@/components/PageHeader";
+import { ArrowRight, TrendingUp, ShieldCheck, Sprout, Users, Truck, Tag } from "lucide-react";
+
+export const Route = createFileRoute("/why-us")({
+  head: () => ({
+    meta: [
+      { title: "Why Choose MegaYield Farms" },
+      { name: "description", content: "Six differentiators that make MegaYield Farms a confident choice for buyers, funders and partners." },
+      { property: "og:title", content: "Why Choose MegaYield Farms" },
+      { property: "og:description", content: "Proven production, professional operations, scalable land, and youth-led advantage." },
+    ],
+  }),
+  component: WhyUsPage,
+});
+
+const diffs = [
+  { icon: TrendingUp, title: "Proven track record", body: "Six years of operations and a 400% scale-up in 2025 — real production data, not projections." },
+  { icon: ShieldCheck, title: "Professional operations", body: "Registered enterprise with structured systems, financial discipline and reporting cadence." },
+  { icon: Truck, title: "Reliability", body: "Consistent harvest cycles and dependable cool-chain handling for B2B supply." },
+  { icon: Sprout, title: "Scalability", body: "8 hectares of accessible land, with 2.5 in active production today — built-in headroom." },
+  { icon: Tag, title: "Competitive pricing", body: "Competitive wholesale rates with volume discounts available. Contact us to discuss." },
+  { icon: Users, title: "Youth-led advantage", body: "Founders under 35 unlock access to substantial South African government funding programs." },
+];
+
+function WhyUsPage() {
+  return (
+    <div className="min-h-screen">
+      <SiteNav />
+      <PageHeader
+        eyebrow="Why us"
+        title="Six reasons partners back MegaYield."
+        intro="Each differentiator below is something we can prove on the ground, in the books, or in the field."
+      />
+      <section className="container-x py-20 md:py-28">
+        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          {diffs.map((d, i) => (
+            <div key={d.title} className="rounded-3xl border border-border bg-card p-8 transition-all hover:-translate-y-1 hover:shadow-[var(--shadow-lift)]">
+              <span className="font-display text-sm text-[var(--color-gold)]">0{i + 1}</span>
+              <div className="mt-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                <d.icon className="h-5 w-5" />
+              </div>
+              <h3 className="mt-5 font-display text-xl">{d.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{d.body}</p>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-16 rounded-3xl bg-primary p-10 text-primary-foreground md:flex md:items-center md:justify-between md:p-14">
+          <div>
+            <p className="eyebrow text-[var(--color-gold)]">Ready to dig in?</p>
+            <h2 className="mt-3 font-display text-3xl md:text-4xl">Schedule a farm visit.</h2>
+            <p className="mt-3 max-w-xl text-white/80">Meet the team, see the operation, and get a feel for the discipline behind the data.</p>
+          </div>
+          <Link to="/contact" className="mt-6 btn-gold md:mt-0">Schedule a visit <ArrowRight className="h-4 w-4" /></Link>
+        </div>
+      </section>
+      <SiteFooter />
+    </div>
+  );
+}
