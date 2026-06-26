@@ -18,11 +18,18 @@ export const Route = createFileRoute("/why-us")({
 
 const diffs = [
   { icon: TrendingUp, title: "Proven track record", body: "Six years of operations and a 400% scale-up in 2025 — real production data, not projections." },
-  { icon: ShieldCheck, title: "Professional operations", body: "Registered enterprise with structured systems, financial discipline and reporting cadence." },
-  { icon: Truck, title: "Reliability", body: "Consistent harvest cycles and dependable cool-chain handling for B2B supply." },
-  { icon: Sprout, title: "Scalability", body: "8 hectares of accessible land, with 2.5 in active production today — built-in headroom." },
-  { icon: Tag, title: "Competitive pricing", body: "Competitive wholesale rates with volume discounts available. Contact us to discuss." },
-  { icon: Users, title: "Youth-led advantage", body: "Founders under 35 unlock access to substantial South African government funding programs." },
+  { icon: ShieldCheck, title: "Professional operations", body: "Registered enterprise with structured systems, financial discipline and a consistent reporting cadence." },
+  { icon: Truck, title: "Reliable supplier", body: "Continuous production cycles and dependable handling for retail and wholesale partners across Gauteng." },
+  { icon: Sprout, title: "Built for scale", body: "8 hectares of accessible land via our Kgomodiile Projects partnership — clear headroom to grow with demand." },
+  { icon: Tag, title: "Market validation", body: "Active B2B supply relationships and engagement with major retailers like Spar and OK." },
+  { icon: Users, title: "Youth-led credibility", body: "Founders under 35 — eligible for substantial South African government growth programs as part of our funding mix." },
+];
+
+const pathways = [
+  { t: "Supply contracts", b: "For B2B buyers, distributors and retailers seeking a reliable chilli supplier." },
+  { t: "Strategic investment", b: "For impact and commercial investors backing proven youth-led agriculture." },
+  { t: "Strategic collaboration", b: "For equipment, land, logistics or expertise partners interested in growing with us." },
+  { t: "Community partnership", b: "For NGOs and organisations focused on food security and skills development." },
 ];
 
 function WhyUsPage() {
