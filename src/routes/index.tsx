@@ -51,15 +51,15 @@ function Hero() {
             Growing what matters.
           </h1>
           <p className="mt-6 max-w-xl text-base text-white/85 md:text-lg">
-            A youth-led agricultural enterprise delivering consistent, high-demand vegetable
-            supply to supermarkets, bulk distributors and traders across South Africa.
+            Reliable chilli pepper supplier with growth opportunities for B2B partners,
+            strategic investors, and community collaborators across Gauteng.
           </p>
           <div className="mt-9 flex flex-wrap gap-3">
-            <Link to="/funding" className="btn-gold">
-              Funding & Investment <ArrowRight className="h-4 w-4" />
-            </Link>
-            <Link to="/contact" className="btn-outline border-white/30 text-white hover:bg-white/10">
+            <Link to="/contact" className="btn-gold">
               Supply Partnership <ArrowRight className="h-4 w-4" />
+            </Link>
+            <Link to="/funding" className="btn-outline border-white/30 text-white hover:bg-white/10">
+              Strategic Partnerships <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
           <dl className="mt-14 grid max-w-2xl grid-cols-3 gap-6 border-t border-white/15 pt-8">
@@ -177,16 +177,17 @@ function ImpactSection() {
             "Keeping people fed is our peace of mind."
           </h2>
           <p className="mt-5 max-w-md text-white/80">
-            Impact isn't a side project for us — it's the reason MegaYield exists. Every hectare
-            we expand creates jobs, apprenticeships, and food for communities around Winterveld.
+            Impact isn't a side project for us — it's part of how we measure success. We employ
+            seasonal workers from Winterveld and partner with Vuka Africa Youth Hub to donate
+            produce to local community members.
           </p>
         </div>
         <dl className="grid grid-cols-2 gap-8 self-end">
           {[
-            ["Local jobs", "Created and supported through every expansion phase"],
-            ["Apprenticeships", "Hands-on training for young agricultural workers"],
-            ["Food security", "Fresh produce reaching local markets and households"],
-            ["Land stewardship", "Responsible cultivation across 8 hectares"],
+            ["Local jobs", "Seasonal workers employed from the Winterveld community"],
+            ["Produce donation", "Partnered with Vuka Africa Youth Hub on community giving"],
+            ["Food security", "Fresh chillies and produce reaching local households"],
+            ["Future training", "Building toward apprenticeship programs as we scale"],
           ].map(([k, v]) => (
             <div key={k} className="border-l border-white/20 pl-5">
               <dt className="font-display text-xl text-[var(--color-gold)]">{k}</dt>
@@ -204,8 +205,8 @@ function DualCTA() {
     <section className="container-x py-24 md:py-32">
       <div className="grid gap-6 md:grid-cols-2">
         {[
-          { to: "/funding", eyebrow: "For funders & investors", title: "See the investment case", body: "Business overview, growth trajectory, team credentials, and impact plan.", cta: "Funding & support" },
-          { to: "/contact", eyebrow: "For B2B buyers", title: "Talk supply partnerships", body: "Consistent volume, wholesale-grade produce, transparent operations — let's discuss.", cta: "Start a conversation" },
+          { to: "/contact", eyebrow: "For B2B buyers", title: "Talk supply partnerships", body: "Consistent volume, wholesale-grade chillies, transparent operations — let's discuss.", cta: "Start a conversation" },
+          { to: "/funding", eyebrow: "For investors & collaborators", title: "Explore growth partnerships", body: "Strategic investment, grant funding, equipment, land, and collaboration opportunities.", cta: "Partnership overview" },
         ].map((c) => (
           <Link
             to={c.to}

@@ -22,14 +22,14 @@ const phases = [
   { phase: "Phase 01", title: "Site preparation & infrastructure", body: "Land preparation, irrigation upgrades and operational infrastructure for the additional 1.5 ha." },
   { phase: "Phase 02", title: "Planting & crop establishment", body: "Phased planting of cayenne chillies across the expansion zone with established production protocols." },
   { phase: "Phase 03", title: "First commercial harvest", body: "First harvests from the expansion supplying our committed B2B channel partners." },
-  { phase: "Phase 04", title: "Sustained scale & impact", body: "Full production cadence with measurable jobs, apprenticeships and community impact outcomes." },
+  { phase: "Phase 04", title: "Sustained scale & impact", body: "Full production cadence with measurable jobs, community donation and future skills-training outcomes." },
 ];
 
 const impact = [
-  "New permanent and seasonal jobs created",
-  "Apprenticeships for young agricultural workers",
-  "Increased local fresh-produce supply",
-  "Expanded reliable supply to retail partners",
+  "New permanent and seasonal jobs for the Winterveld community",
+  "Building toward apprenticeship programs as we scale",
+  "Increased local fresh-produce supply and NGO donation volume",
+  "Expanded reliable supply to retail and B2B partners",
 ];
 
 function ProjectPage() {
@@ -58,9 +58,9 @@ function ProjectPage() {
               major retail buyers, and significantly grow our community impact footprint.
             </p>
             <p className="mt-4 text-muted-foreground">
-              <strong className="text-foreground">Project investment required:</strong> substantial.
-              We are actively pursuing grant funding through South African government programs.
-              Contact us for detailed financial planning discussions.
+              <strong className="text-foreground">Strategic expansion initiative in progress.</strong>{" "}
+              We're pursuing growth partnerships and grant funding to support this phase —
+              contact us to explore collaboration opportunities.
             </p>
           </div>
         </div>
@@ -97,15 +97,15 @@ function ProjectPage() {
             </ul>
           </div>
           <div className="rounded-3xl bg-primary p-10 text-primary-foreground md:p-14">
-            <p className="eyebrow text-[var(--color-gold)]">For funders & investors</p>
-            <h3 className="mt-3 font-display text-3xl">Want the full project pack?</h3>
+            <p className="eyebrow text-[var(--color-gold)]">For partners & collaborators</p>
+            <h3 className="mt-3 font-display text-3xl">Explore growth partnerships.</h3>
             <p className="mt-4 text-white/80">
-              Detailed financial projections, production data and impact metrics are available
-              upon request to serious investors and funding partners.
+              Whether you're a B2B buyer, strategic investor, equipment or land collaborator —
+              we'd value a conversation. Detailed project information is available on request.
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
-              <Link to="/funding" className="btn-gold">Funding overview <ArrowRight className="h-4 w-4" /></Link>
-              <Link to="/contact" className="btn-outline border-white/30 text-white hover:bg-white/10">Request the pack</Link>
+              <Link to="/contact" className="btn-gold">Start a conversation <ArrowRight className="h-4 w-4" /></Link>
+              <Link to="/funding" className="btn-outline border-white/30 text-white hover:bg-white/10">Partnership overview</Link>
             </div>
           </div>
         </div>

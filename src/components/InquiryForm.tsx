@@ -51,12 +51,13 @@ export function InquiryForm({ defaultInquiry = "General inquiry", compact = fals
             defaultValue={defaultInquiry}
             className="w-full rounded-lg border border-input bg-background px-3 py-2.5 text-sm outline-none transition focus:border-primary"
           >
-            <option>General inquiry</option>
-            <option>Funding / investment</option>
-            <option>Supply partnership (B2B)</option>
-            <option>Strategic partnership</option>
-            <option>Community / impact program</option>
+            <option>Supply partnership (B2B buyer)</option>
+            <option>Investment / funding</option>
+            <option>Strategic partnership / collaboration</option>
+            <option>Employment / future apprenticeship</option>
+            <option>Community partnership</option>
             <option>Schedule a farm visit</option>
+            <option>General inquiry</option>
           </select>
         </div>
         <div className={compact ? "" : "md:col-span-2"}>

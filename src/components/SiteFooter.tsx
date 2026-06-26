@@ -24,7 +24,7 @@ export function SiteFooter() {
               ["/produce", "What we produce"],
               ["/project", "Our project"],
               ["/why-us", "Why choose us"],
-              ["/funding", "Funding & support"],
+              ["/funding", "Growth partnerships"],
               ["/contact", "Contact"],
             ].map(([to, label]) => (
               <li key={to}>
