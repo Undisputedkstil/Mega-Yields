@@ -51,15 +51,15 @@ function Hero() {
             Growing what matters.
           </h1>
           <p className="mt-6 max-w-xl text-base text-white/85 md:text-lg">
-            A youth-led agricultural enterprise delivering consistent, high-demand vegetable
-            supply to supermarkets, bulk distributors and traders across South Africa.
+            Reliable chilli pepper supplier with growth opportunities for B2B partners,
+            strategic investors, and community collaborators across Gauteng.
           </p>
           <div className="mt-9 flex flex-wrap gap-3">
-            <Link to="/funding" className="btn-gold">
-              Funding & Investment <ArrowRight className="h-4 w-4" />
-            </Link>
-            <Link to="/contact" className="btn-outline border-white/30 text-white hover:bg-white/10">
+            <Link to="/contact" className="btn-gold">
               Supply Partnership <ArrowRight className="h-4 w-4" />
+            </Link>
+            <Link to="/funding" className="btn-outline border-white/30 text-white hover:bg-white/10">
+              Strategic Partnerships <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
           <dl className="mt-14 grid max-w-2xl grid-cols-3 gap-6 border-t border-white/15 pt-8">
