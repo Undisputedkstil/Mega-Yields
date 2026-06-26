@@ -97,15 +97,15 @@ function ProjectPage() {
             </ul>
           </div>
           <div className="rounded-3xl bg-primary p-10 text-primary-foreground md:p-14">
-            <p className="eyebrow text-[var(--color-gold)]">For funders & investors</p>
-            <h3 className="mt-3 font-display text-3xl">Want the full project pack?</h3>
+            <p className="eyebrow text-[var(--color-gold)]">For partners & collaborators</p>
+            <h3 className="mt-3 font-display text-3xl">Explore growth partnerships.</h3>
             <p className="mt-4 text-white/80">
-              Detailed financial projections, production data and impact metrics are available
-              upon request to serious investors and funding partners.
+              Whether you're a B2B buyer, strategic investor, equipment or land collaborator —
+              we'd value a conversation. Detailed project information is available on request.
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
-              <Link to="/funding" className="btn-gold">Funding overview <ArrowRight className="h-4 w-4" /></Link>
-              <Link to="/contact" className="btn-outline border-white/30 text-white hover:bg-white/10">Request the pack</Link>
+              <Link to="/contact" className="btn-gold">Start a conversation <ArrowRight className="h-4 w-4" /></Link>
+              <Link to="/funding" className="btn-outline border-white/30 text-white hover:bg-white/10">Partnership overview</Link>
             </div>
           </div>
         </div>
