@@ -107,14 +107,25 @@ function AboutPage() {
 
       <section className="bg-[oklch(0.97_0.018_90)] py-20 md:py-28">
         <div className="container-x">
-          <p className="eyebrow">Timeline</p>
-          <h2 className="mt-3 font-display text-3xl md:text-4xl">From a single plot to a scalable enterprise</h2>
-          <ol className="mt-10 grid gap-5 md:grid-cols-4">
+          <p className="eyebrow">Operational track record</p>
+          <h2 className="mt-3 font-display text-3xl md:text-4xl">Tested, learned, refined, and scaled — with community impact in mind.</h2>
+          <p className="mt-4 max-w-2xl text-muted-foreground">
+            MegaYield Farms has built capability through systematic execution across six years
+            of disciplined operations.
+          </p>
+          <ol className="mt-10 grid gap-5 md:grid-cols-2">
             {timeline.map((t) => (
-              <li key={t.year} className="rounded-2xl border border-border bg-card p-6">
-                <div className="font-display text-3xl text-[var(--color-gold)]">{t.year}</div>
-                <h3 className="mt-2 font-display text-lg">{t.title}</h3>
-                <p className="mt-2 text-sm text-muted-foreground">{t.body}</p>
+              <li key={t.year} className="rounded-2xl border border-border bg-card p-7">
+                <div className="font-display text-2xl text-[var(--color-gold)]">{t.year}</div>
+                <h3 className="mt-2 font-display text-xl">{t.title}</h3>
+                <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
+                  {t.bullets.map((b) => (
+                    <li key={b} className="flex gap-2">
+                      <span className="mt-2 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                      <span>{b}</span>
+                    </li>
+                  ))}
+                </ul>
               </li>
             ))}
           </ol>
@@ -124,28 +135,45 @@ function AboutPage() {
       <section className="container-x py-20 md:py-28">
         <div className="grid gap-12 md:grid-cols-2">
           <div className="rounded-3xl border border-border bg-card p-10">
-            <p className="eyebrow">Mission</p>
+            <p className="eyebrow">Our mission</p>
             <p className="mt-4 font-display text-2xl leading-snug">
-              To grow consistent, high-quality vegetable supply for South African B2B markets —
-              creating jobs and food security as we scale.
+              To deliver consistent, high-quality agricultural output through efficient farming
+              systems, disciplined execution, and unwavering commitment to supply consistency —
+              while building sustainable value for partners, markets, and communities.
+            </p>
+            <p className="mt-5 font-display text-lg text-[var(--color-gold)]">
+              Keeping people fed is our peace of mind.
+            </p>
+            <p className="mt-4 text-sm text-muted-foreground">
+              We exist to solve a real problem: reliable chilli supply in a market where demand
+              consistently exceeds local availability. And a second one: creating economic and
+              learning opportunities in communities where they're needed.
             </p>
           </div>
           <div className="rounded-3xl bg-primary p-10 text-primary-foreground">
-            <p className="eyebrow text-[var(--color-gold)]">Vision</p>
+            <p className="eyebrow text-[var(--color-gold)]">Our vision</p>
             <p className="mt-4 font-display text-2xl leading-snug">
-              To become a trusted reference point for youth-led agricultural enterprise in
-              Southern Africa — proof that purpose and profitability grow together.
+              To establish MegaYield Farms as the preferred chilli pepper supplier across
+              Gauteng by 2028 — recognised for exceptional reliability, consistent quality,
+              scalable production capacity, and meaningful community impact.
             </p>
+            <ul className="mt-6 space-y-2 text-sm text-white/85">
+              <li>• Buyers trust us because our chilli peppers are the reliable choice</li>
+              <li>• Communities benefit from jobs we create and produce we donate</li>
+              <li>• Young people learn through apprenticeships and agricultural skills training</li>
+              <li>• Our growth strengthens food security, not just profit margins</li>
+            </ul>
           </div>
         </div>
 
         <div className="mt-16">
-          <p className="eyebrow">Values</p>
-          <div className="mt-6 grid gap-5 md:grid-cols-4">
+          <p className="eyebrow">Our values</p>
+          <h2 className="mt-3 font-display text-3xl md:text-4xl">How we operate, every day.</h2>
+          <div className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {values.map((v) => (
-              <div key={v.t} className="rounded-2xl border border-border p-6">
-                <h3 className="font-display text-lg">{v.t}</h3>
-                <p className="mt-2 text-sm text-muted-foreground">{v.b}</p>
+              <div key={v.t} className="rounded-2xl border border-border bg-card p-7">
+                <h3 className="font-display text-xl">{v.t}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{v.b}</p>
               </div>
             ))}
           </div>
