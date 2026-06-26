@@ -58,9 +58,9 @@ function ProjectPage() {
               major retail buyers, and significantly grow our community impact footprint.
             </p>
             <p className="mt-4 text-muted-foreground">
-              <strong className="text-foreground">Project investment required:</strong> substantial.
-              We are actively pursuing grant funding through South African government programs.
-              Contact us for detailed financial planning discussions.
+              <strong className="text-foreground">Strategic expansion initiative in progress.</strong>{" "}
+              We're pursuing growth partnerships and grant funding to support this phase —
+              contact us to explore collaboration opportunities.
             </p>
           </div>
         </div>
