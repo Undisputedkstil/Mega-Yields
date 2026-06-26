@@ -37,9 +37,9 @@ function FundingPage() {
     <div className="min-h-screen">
       <SiteNav />
       <PageHeader
-        eyebrow="Funding & support"
-        title="A fundable, high-impact agricultural opportunity."
-        intro="We're actively pursuing a focused mix of South African government grant programs and aligned investor capital. The case is built on proven production, validated market demand and measurable community impact."
+        eyebrow="Growth partnerships"
+        title="Multiple pathways to partner with a proven farm."
+        intro="We're a professional agricultural business with proven production and market validation. Alongside B2B supply contracts, we welcome strategic investment, grant funding and collaboration with aligned partners."
       />
 
       <section className="container-x py-20 md:py-28">
