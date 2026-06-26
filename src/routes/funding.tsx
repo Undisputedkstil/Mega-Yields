@@ -8,10 +8,10 @@ import { CheckCircle2 } from "lucide-react";
 export const Route = createFileRoute("/funding")({
   head: () => ({
     meta: [
-      { title: "Funding & Support — MegaYield Farms" },
-      { name: "description", content: "Government and investor funding pathways MegaYield Farms is actively pursuing as a youth-led South African enterprise." },
-      { property: "og:title", content: "Funding & Support — MegaYield Farms" },
-      { property: "og:description", content: "NYDA, SEDA, DALRRD, DSBD and impact investor pathways." },
+      { title: "Growth Partnerships — MegaYield Farms" },
+      { name: "description", content: "Strategic partnership pathways at MegaYield Farms — B2B supply, strategic investment, grant funding and collaboration opportunities." },
+      { property: "og:title", content: "Growth Partnerships — MegaYield Farms" },
+      { property: "og:description", content: "Supply, investment, grant funding and strategic collaboration with a proven youth-led farm." },
     ],
   }),
   component: FundingPage,
