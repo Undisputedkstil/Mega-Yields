@@ -18,17 +18,57 @@ export const Route = createFileRoute("/about")({
 });
 
 const timeline = [
-  { year: "2019", title: "Founded", body: "MegaYield Farms begins operations on a 0.5 hectare plot in Winterveld with a single focus: cayenne chillies." },
-  { year: "2022", title: "Process discipline", body: "Production systems formalised. Consistent harvest cycles established." },
-  { year: "2025", title: "Scaled 400%", body: "Production expands across 2.5 hectares with growing B2B inbound interest from Spar and OK." },
-  { year: "Now", title: "2-hectare expansion", body: "Actively pursuing grant funding to take chilli production to 2 ha, with pilot crops in development." },
+  {
+    year: "2019–2020",
+    title: "Foundation",
+    bullets: [
+      "Launched with backyard poultry operation (10 → 400 birds)",
+      "Developed core farm management skills",
+      "Built operational systems and discipline",
+      "First community support: surplus birds shared with local families",
+    ],
+  },
+  {
+    year: "2021–2023",
+    title: "Crop trials & learning",
+    bullets: [
+      "Systematic trials across spinach, maize, chilli, tomatoes, onions",
+      "Mastered crop production techniques",
+      "Built market intelligence and sales relationships",
+      "Refined operational procedures",
+      "Began donating surplus spinach to local community members",
+    ],
+  },
+  {
+    year: "2024",
+    title: "Land partnership & infrastructure",
+    bullets: [
+      "Secured 8-hectare land partnership (Kgomodiile Projects)",
+      "Began infrastructure development",
+      "Transitioned to continuous production cycles",
+      "Established reliable supply relationships",
+      "Formalized community donation approach",
+    ],
+  },
+  {
+    year: "2025–Present",
+    title: "Commercial production & community impact",
+    bullets: [
+      "Scaled chilli production by 400% (commercial viability proven)",
+      "Established B2B supply relationships",
+      "Maintained continuous production discipline",
+      "Partnered with NGO (Vuka Africa Youth Hub) for produce donation",
+      "Employed seasonal workers from Winterveld",
+    ],
+  },
 ];
 
 const values = [
-  { t: "Discipline", b: "We earn growth by getting one crop right before we add the next." },
-  { t: "Transparency", b: "Open data, open books to the partners and funders who back us." },
-  { t: "Impact", b: "Every hectare expanded is jobs, training and food for our community." },
-  { t: "Stewardship", b: "We farm land we expect to hand on better than we received it." },
+  { t: "Consistency", b: "We build trust through reliable production cycles and dependable supply. Our reputation is built on delivery performance, not promises." },
+  { t: "Focus", b: "We concentrate our resources on what works. Chilli pepper production is our core. We do not chase trends — we execute our strategy with discipline." },
+  { t: "Discipline", b: "Every decision is grounded in practical experience, honest numbers, and long-term thinking. We avoid shortcuts and build sustainable operations." },
+  { t: "Growth with purpose", b: "We scale deliberately — not for its own sake, but to build something that lasts and creates opportunity." },
+  { t: "Community first", b: "Keeping people fed is our peace of mind. Community benefit is not separate from business success — it is part of how we measure it." },
 ];
 
 function AboutPage() {
