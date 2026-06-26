@@ -55,6 +55,24 @@ function WhyUsPage() {
           ))}
         </div>
 
+        <div className="mt-20">
+          <p className="eyebrow">Multiple pathways for partnership</p>
+          <h2 className="mt-3 font-display text-3xl md:text-4xl">Let's explore how we can grow together.</h2>
+          <p className="mt-4 max-w-2xl text-muted-foreground">
+            We are a professional, proven agricultural operation positioned for scalable growth.
+            We're actively serving major retailers, building B2B partnerships across Gauteng,
+            pursuing strategic growth opportunities, and creating jobs and community impact.
+          </p>
+          <div className="mt-8 grid gap-5 md:grid-cols-2">
+            {pathways.map((p) => (
+              <div key={p.t} className="rounded-2xl border border-border bg-card p-6">
+                <h3 className="font-display text-lg">{p.t}</h3>
+                <p className="mt-2 text-sm text-muted-foreground">{p.b}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
         <div className="mt-16 rounded-3xl bg-primary p-10 text-primary-foreground md:flex md:items-center md:justify-between md:p-14">
           <div>
             <p className="eyebrow text-[var(--color-gold)]">Ready to dig in?</p>
