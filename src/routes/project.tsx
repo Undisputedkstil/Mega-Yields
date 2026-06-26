@@ -22,14 +22,14 @@ const phases = [
   { phase: "Phase 01", title: "Site preparation & infrastructure", body: "Land preparation, irrigation upgrades and operational infrastructure for the additional 1.5 ha." },
   { phase: "Phase 02", title: "Planting & crop establishment", body: "Phased planting of cayenne chillies across the expansion zone with established production protocols." },
   { phase: "Phase 03", title: "First commercial harvest", body: "First harvests from the expansion supplying our committed B2B channel partners." },
-  { phase: "Phase 04", title: "Sustained scale & impact", body: "Full production cadence with measurable jobs, apprenticeships and community impact outcomes." },
+  { phase: "Phase 04", title: "Sustained scale & impact", body: "Full production cadence with measurable jobs, community donation and future skills-training outcomes." },
 ];
 
 const impact = [
-  "New permanent and seasonal jobs created",
-  "Apprenticeships for young agricultural workers",
-  "Increased local fresh-produce supply",
-  "Expanded reliable supply to retail partners",
+  "New permanent and seasonal jobs for the Winterveld community",
+  "Building toward apprenticeship programs as we scale",
+  "Increased local fresh-produce supply and NGO donation volume",
+  "Expanded reliable supply to retail and B2B partners",
 ];
 
 function ProjectPage() {
