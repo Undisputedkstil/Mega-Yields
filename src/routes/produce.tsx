@@ -77,15 +77,82 @@ function ProducePage() {
           ))}
         </div>
 
-        <div className="mt-24 rounded-3xl border border-border bg-[oklch(0.97_0.018_90)] p-10 md:p-14">
-          <p className="eyebrow">Pilot crops</p>
-          <h2 className="mt-3 font-display text-3xl md:text-4xl">A controlled approach to expansion</h2>
-          <p className="mt-4 max-w-2xl text-muted-foreground">
-            Beyond our core basket, we run small-batch pilots of selected high-value crops.
-            We only add a crop to our offering once it meets the same quality and consistency
-            bar we hold our chillies to.
-          </p>
+        <div className="mt-24">
+          <div className="max-w-3xl">
+            <p className="eyebrow">Pilot & emerging crops</p>
+            <h2 className="mt-3 font-display text-3xl md:text-4xl">Pilot & Emerging Crops</h2>
+            <p className="mt-4 text-muted-foreground md:text-lg">
+              Expanding our product portfolio through carefully managed pilot production,
+              protected cultivation, and sustainable farming practices as we continue
+              building long-term commercial supply capacity.
+            </p>
+          </div>
+
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {[
+              {
+                icon: CircleDot,
+                name: "Onions",
+                badge: "Expanding Production",
+                body: "Our onion programme is continuously expanding as we refine production systems and strengthen our ability to supply consistent, high-quality produce to commercial markets.",
+                features: ["Commercial production", "Quality-focused cultivation", "Wholesale supply development"],
+              },
+              {
+                icon: Cherry,
+                name: "Beetroot",
+                badge: "Growing Portfolio",
+                body: "Beetroot forms part of our diversified crop portfolio, produced using sustainable farming practices and strict quality standards to meet evolving market demand.",
+                features: ["Fresh market production", "Sustainable cultivation", "Reliable seasonal supply"],
+              },
+              {
+                icon: Leaf,
+                name: "Tomatoes",
+                badge: "Protected Cultivation",
+                body: "Our tomatoes are cultivated in protected growing environments to deliver healthy, vine-ripened produce with consistent quality throughout the production season.",
+                features: ["Shade house production", "Fresh wholesale supply", "Quality-driven cultivation"],
+              },
+              {
+                icon: Bean,
+                name: "Green Beans",
+                badge: "Seasonal Production",
+                body: "Green beans are grown as part of our diversified production strategy, supporting a broader fresh produce offering for retailers, distributors, and wholesale buyers.",
+                features: ["Fresh market quality", "Sustainable growing practices", "Commercial supply"],
+              },
+              {
+                icon: Trees,
+                name: "Seedling Nursery",
+                badge: "The Foundation of Every Harvest",
+                body: "Every successful harvest begins in our nursery. We propagate healthy, vigorous seedlings under carefully managed conditions, creating a strong foundation for consistent crop performance across every growing season.",
+                features: ["Professional seed propagation", "Healthy transplant development", "Supporting long-term farm growth"],
+              },
+            ].map((c) => {
+              const Icon = c.icon;
+              return (
+                <article
+                  key={c.name}
+                  className="group flex flex-col rounded-3xl border border-border bg-card p-8 shadow-[var(--shadow-soft)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow-lift)]"
+                >
+                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[oklch(0.97_0.018_90)] text-[var(--color-primary)]">
+                    <Icon className="h-6 w-6" />
+                  </div>
+                  <span className="mt-6 inline-flex w-fit items-center rounded-full border border-border bg-[oklch(0.97_0.018_90)] px-3 py-1 text-xs font-semibold uppercase tracking-wider text-[var(--color-gold)]">
+                    {c.badge}
+                  </span>
+                  <h3 className="mt-4 font-display text-2xl">{c.name}</h3>
+                  <p className="mt-3 text-sm text-muted-foreground">{c.body}</p>
+                  <ul className="mt-6 space-y-2 text-sm">
+                    {c.features.map((f) => (
+                      <li key={f} className="flex items-start gap-2">
+                        <Sprout className="mt-0.5 h-4 w-4 shrink-0 text-[var(--color-gold)]" /> {f}
+                      </li>
+                    ))}
+                  </ul>
+                </article>
+              );
+            })}
+          </div>
         </div>
+
 
         <div className="mt-16 rounded-3xl border border-border p-10 md:flex md:items-center md:justify-between md:p-14">
           <div>
