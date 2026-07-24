@@ -96,51 +96,57 @@ function ProducePage() {
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {[
               {
-                icon: CircleDot,
+                img: onionsImg,
                 name: "Onions",
                 badge: "Expanding Production",
                 body: "Our onion programme is continuously expanding as we refine production systems and strengthen our ability to supply consistent, high-quality produce to commercial markets.",
                 features: ["Commercial production", "Quality-focused cultivation", "Wholesale supply development"],
               },
               {
-                icon: Cherry,
+                img: beetrootImg,
                 name: "Beetroot",
                 badge: "Growing Portfolio",
                 body: "Beetroot forms part of our diversified crop portfolio, produced using sustainable farming practices and strict quality standards to meet evolving market demand.",
                 features: ["Fresh market production", "Sustainable cultivation", "Reliable seasonal supply"],
               },
               {
-                icon: Leaf,
+                img: tomatoesShadeImg,
                 name: "Tomatoes",
                 badge: "Protected Cultivation",
                 body: "Our tomatoes are cultivated in protected growing environments to deliver healthy, vine-ripened produce with consistent quality throughout the production season.",
                 features: ["Shade house production", "Fresh wholesale supply", "Quality-driven cultivation"],
               },
               {
-                icon: Bean,
+                img: greenBeansImg,
                 name: "Green Beans",
                 badge: "Seasonal Production",
                 body: "Green beans are grown as part of our diversified production strategy, supporting a broader fresh produce offering for retailers, distributors, and wholesale buyers.",
                 features: ["Fresh market quality", "Sustainable growing practices", "Commercial supply"],
               },
               {
-                icon: Trees,
+                img: seedlingsImg,
                 name: "Seedling Nursery",
                 badge: "The Foundation of Every Harvest",
                 body: "Every successful harvest begins in our nursery. We propagate healthy, vigorous seedlings under carefully managed conditions, creating a strong foundation for consistent crop performance across every growing season.",
                 features: ["Professional seed propagation", "Healthy transplant development", "Supporting long-term farm growth"],
               },
-            ].map((c) => {
-              const Icon = c.icon;
-              return (
-                <article
-                  key={c.name}
-                  className="group flex flex-col rounded-3xl border border-border bg-card p-8 shadow-[var(--shadow-soft)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow-lift)]"
-                >
-                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[oklch(0.97_0.018_90)] text-[var(--color-primary)]">
-                    <Icon className="h-6 w-6" />
-                  </div>
-                  <span className="mt-6 inline-flex w-fit items-center rounded-full border border-border bg-[oklch(0.97_0.018_90)] px-3 py-1 text-xs font-semibold uppercase tracking-wider text-[var(--color-gold)]">
+            ].map((c) => (
+              <article
+                key={c.name}
+                className="group flex flex-col overflow-hidden rounded-3xl border border-border bg-card shadow-[var(--shadow-soft)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow-lift)]"
+              >
+                <div className="aspect-[5/4] w-full overflow-hidden">
+                  <img
+                    src={c.img}
+                    alt={c.name}
+                    loading="lazy"
+                    width={1024}
+                    height={1024}
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
+                <div className="flex flex-1 flex-col p-8">
+                  <span className="inline-flex w-fit items-center rounded-full border border-border bg-[oklch(0.97_0.018_90)] px-3 py-1 text-xs font-semibold uppercase tracking-wider text-[var(--color-gold)]">
                     {c.badge}
                   </span>
                   <h3 className="mt-4 font-display text-2xl">{c.name}</h3>
@@ -152,11 +158,12 @@ function ProducePage() {
                       </li>
                     ))}
                   </ul>
-                </article>
-              );
-            })}
+                </div>
+              </article>
+            ))}
           </div>
         </div>
+
 
 
         <div className="mt-16 rounded-3xl border border-border p-10 md:flex md:items-center md:justify-between md:p-14">
