@@ -182,23 +182,52 @@ function AboutPage() {
 
       <section className="bg-[oklch(0.97_0.018_90)] py-20 md:py-28">
         <div className="container-x">
-          <p className="eyebrow">Team</p>
-          <h2 className="mt-3 font-display text-3xl md:text-4xl">Founders & management</h2>
+          <p className="eyebrow">Leadership team</p>
+          <h2 className="mt-3 font-display text-3xl md:text-4xl">The people behind MegaYield Farms</h2>
           <p className="mt-3 max-w-2xl text-muted-foreground">
-            A youth-led leadership team with operational discipline and on-the-ground production
-            experience. Full team profiles available on request to serious funders and partners.
+            A focused leadership team combining strategic vision, operational discipline,
+            and deep agricultural mentorship — driving MegaYield Farms toward long-term
+            commercial and community impact.
           </p>
-          <div className="mt-10 grid gap-5 md:grid-cols-3">
-            {["Founder & CEO", "Operations Lead", "Production Manager"].map((role) => (
-              <div key={role} className="rounded-2xl border border-border bg-card p-6">
-                <div className="h-14 w-14 rounded-full bg-gradient-to-br from-primary to-[var(--color-gold)]" />
-                <p className="mt-4 font-display text-lg">MegaYield {role}</p>
-                <p className="mt-1 text-sm text-muted-foreground">Profile available upon request.</p>
-              </div>
+          <div className="mt-10 grid gap-6 md:grid-cols-3">
+            {[
+              {
+                name: "Karabo Molamu",
+                role: "Founder & Managing Director",
+                bio: "Karabo Molamu founded MegaYield Farms with a vision of building a modern, sustainable agricultural business focused on producing high-quality fresh produce for South African retail, wholesale, and commercial markets. He leads the company's long-term strategy, business development, partnerships, innovation, and overall growth.",
+                initials: "KM",
+              },
+              {
+                name: "Zwelihle Zulu",
+                role: "Co-Founder & Operations Director",
+                bio: "Zwelihle Zulu oversees the day-to-day farming operations, production planning, crop management, and operational execution. He ensures that farming activities are carried out efficiently while maintaining the company's quality and sustainability standards.",
+                initials: "ZZ",
+              },
+              {
+                name: "Gilbert Sehoole",
+                role: "Mentor & Agricultural Supervisor",
+                bio: "Gilbert Sehoole provides strategic mentorship and agricultural guidance, supporting production planning, best farming practices, and operational development while helping strengthen the long-term growth of MegaYield Farms.",
+                initials: "GS",
+              },
+            ].map((p) => (
+              <article
+                key={p.name}
+                className="flex flex-col rounded-3xl border border-border bg-card p-8 shadow-[var(--shadow-soft)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow-lift)]"
+              >
+                <div className="flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-primary to-[var(--color-gold)] font-display text-2xl text-primary-foreground shadow-[var(--shadow-soft)]">
+                  {p.initials}
+                </div>
+                <h3 className="mt-6 font-display text-2xl leading-tight">{p.name}</h3>
+                <p className="mt-1 text-sm font-semibold uppercase tracking-wider text-[var(--color-gold)]">
+                  {p.role}
+                </p>
+                <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{p.bio}</p>
+              </article>
             ))}
           </div>
         </div>
       </section>
+
 
       <SiteFooter />
     </div>
