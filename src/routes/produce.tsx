@@ -5,7 +5,7 @@ import { PageHeader } from "@/components/PageHeader";
 import chillies from "@/assets/produce-chillies.jpg";
 import tomatoes from "@/assets/produce-tomatoes.jpg";
 import spinach from "@/assets/produce-spinach.jpg";
-import { ArrowRight, Sprout } from "lucide-react";
+import { ArrowRight, Sprout, Leaf, CircleDot, Cherry, Bean, Trees } from "lucide-react";
 
 export const Route = createFileRoute("/produce")({
   head: () => ({
