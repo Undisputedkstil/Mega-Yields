@@ -5,7 +5,12 @@ import { PageHeader } from "@/components/PageHeader";
 import chillies from "@/assets/produce-chillies.jpg";
 import tomatoes from "@/assets/produce-tomatoes.jpg";
 import spinach from "@/assets/produce-spinach.jpg";
-import { ArrowRight, Sprout, Leaf, CircleDot, Cherry, Bean, Trees } from "lucide-react";
+import onionsImg from "@/assets/pilot-onions.jpg";
+import beetrootImg from "@/assets/pilot-beetroot.jpg";
+import tomatoesShadeImg from "@/assets/pilot-tomatoes-shade.jpg";
+import greenBeansImg from "@/assets/pilot-green-beans.jpg";
+import seedlingsImg from "@/assets/pilot-seedlings.jpg";
+import { ArrowRight, Sprout } from "lucide-react";
 
 export const Route = createFileRoute("/produce")({
   head: () => ({
