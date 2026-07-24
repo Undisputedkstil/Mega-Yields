@@ -212,15 +212,28 @@ function AboutPage() {
             ].map((p) => (
               <article
                 key={p.name}
-                className="flex flex-col rounded-3xl border border-border bg-card p-8 shadow-[var(--shadow-soft)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow-lift)]"
+                className="group relative flex flex-col overflow-hidden rounded-3xl border border-border bg-card p-8 shadow-[var(--shadow-soft)] transition-all duration-300 hover:-translate-y-1 hover:border-[var(--color-gold)]/40 hover:shadow-[var(--shadow-lift)]"
               >
-                <div className="flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-primary to-[var(--color-gold)] font-display text-2xl text-primary-foreground shadow-[var(--shadow-soft)]">
-                  {p.initials}
+                <span
+                  aria-hidden
+                  className="absolute inset-x-0 top-0 h-1 origin-left scale-x-0 bg-gradient-to-r from-primary to-[var(--color-gold)] transition-transform duration-500 group-hover:scale-x-100"
+                />
+                <div className="relative">
+                  <div
+                    aria-hidden
+                    className="absolute -inset-1 rounded-full bg-gradient-to-br from-primary/30 to-[var(--color-gold)]/40 opacity-0 blur-md transition-opacity duration-300 group-hover:opacity-100"
+                  />
+                  <div className="relative flex h-24 w-24 items-center justify-center rounded-full bg-gradient-to-br from-primary to-[var(--color-gold)] font-display text-2xl text-primary-foreground shadow-[var(--shadow-soft)] ring-4 ring-background transition-transform duration-300 group-hover:scale-105">
+                    <span className="tracking-wider">{p.initials}</span>
+                  </div>
                 </div>
-                <h3 className="mt-6 font-display text-2xl leading-tight">{p.name}</h3>
+                <h3 className="mt-6 font-display text-2xl leading-tight transition-colors duration-300 group-hover:text-primary">
+                  {p.name}
+                </h3>
                 <p className="mt-1 text-sm font-semibold uppercase tracking-wider text-[var(--color-gold)]">
                   {p.role}
                 </p>
+                <div className="mt-4 h-px w-10 bg-border transition-all duration-300 group-hover:w-16 group-hover:bg-[var(--color-gold)]" />
                 <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{p.bio}</p>
               </article>
             ))}
