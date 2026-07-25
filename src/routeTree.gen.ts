@@ -10,9 +10,11 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as WhyUsRouteImport } from './routes/why-us'
+import { Route as SustainabilityRouteImport } from './routes/sustainability'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ProjectRouteImport } from './routes/project'
 import { Route as ProduceRouteImport } from './routes/produce'
+import { Route as OperationsRouteImport } from './routes/operations'
 import { Route as FundingRouteImport } from './routes/funding'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AboutRouteImport } from './routes/about'
@@ -21,6 +23,11 @@ import { Route as IndexRouteImport } from './routes/index'
 const WhyUsRoute = WhyUsRouteImport.update({
   id: '/why-us',
   path: '/why-us',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SustainabilityRoute = SustainabilityRouteImport.update({
+  id: '/sustainability',
+  path: '/sustainability',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
@@ -36,6 +43,11 @@ const ProjectRoute = ProjectRouteImport.update({
 const ProduceRoute = ProduceRouteImport.update({
   id: '/produce',
   path: '/produce',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OperationsRoute = OperationsRouteImport.update({
+  id: '/operations',
+  path: '/operations',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FundingRoute = FundingRouteImport.update({
@@ -64,9 +76,11 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/funding': typeof FundingRoute
+  '/operations': typeof OperationsRoute
   '/produce': typeof ProduceRoute
   '/project': typeof ProjectRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/sustainability': typeof SustainabilityRoute
   '/why-us': typeof WhyUsRoute
 }
 export interface FileRoutesByTo {
@@ -74,9 +88,11 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/funding': typeof FundingRoute
+  '/operations': typeof OperationsRoute
   '/produce': typeof ProduceRoute
   '/project': typeof ProjectRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/sustainability': typeof SustainabilityRoute
   '/why-us': typeof WhyUsRoute
 }
 export interface FileRoutesById {
@@ -85,9 +101,11 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/funding': typeof FundingRoute
+  '/operations': typeof OperationsRoute
   '/produce': typeof ProduceRoute
   '/project': typeof ProjectRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/sustainability': typeof SustainabilityRoute
   '/why-us': typeof WhyUsRoute
 }
 export interface FileRouteTypes {
@@ -97,9 +115,11 @@ export interface FileRouteTypes {
     | '/about'
     | '/contact'
     | '/funding'
+    | '/operations'
     | '/produce'
     | '/project'
     | '/sitemap.xml'
+    | '/sustainability'
     | '/why-us'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -107,9 +127,11 @@ export interface FileRouteTypes {
     | '/about'
     | '/contact'
     | '/funding'
+    | '/operations'
     | '/produce'
     | '/project'
     | '/sitemap.xml'
+    | '/sustainability'
     | '/why-us'
   id:
     | '__root__'
@@ -117,9 +139,11 @@ export interface FileRouteTypes {
     | '/about'
     | '/contact'
     | '/funding'
+    | '/operations'
     | '/produce'
     | '/project'
     | '/sitemap.xml'
+    | '/sustainability'
     | '/why-us'
   fileRoutesById: FileRoutesById
 }
@@ -128,9 +152,11 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   ContactRoute: typeof ContactRoute
   FundingRoute: typeof FundingRoute
+  OperationsRoute: typeof OperationsRoute
   ProduceRoute: typeof ProduceRoute
   ProjectRoute: typeof ProjectRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  SustainabilityRoute: typeof SustainabilityRoute
   WhyUsRoute: typeof WhyUsRoute
 }
 
@@ -141,6 +167,13 @@ declare module '@tanstack/react-router' {
       path: '/why-us'
       fullPath: '/why-us'
       preLoaderRoute: typeof WhyUsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sustainability': {
+      id: '/sustainability'
+      path: '/sustainability'
+      fullPath: '/sustainability'
+      preLoaderRoute: typeof SustainabilityRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/sitemap.xml': {
@@ -162,6 +195,13 @@ declare module '@tanstack/react-router' {
       path: '/produce'
       fullPath: '/produce'
       preLoaderRoute: typeof ProduceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/operations': {
+      id: '/operations'
+      path: '/operations'
+      fullPath: '/operations'
+      preLoaderRoute: typeof OperationsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/funding': {
@@ -200,9 +240,11 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   ContactRoute: ContactRoute,
   FundingRoute: FundingRoute,
+  OperationsRoute: OperationsRoute,
   ProduceRoute: ProduceRoute,
   ProjectRoute: ProjectRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  SustainabilityRoute: SustainabilityRoute,
   WhyUsRoute: WhyUsRoute,
 }
 export const routeTree = rootRouteImport
