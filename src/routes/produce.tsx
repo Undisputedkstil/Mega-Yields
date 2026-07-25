@@ -60,7 +60,17 @@ function ProducePage() {
       />
 
       <section className="container-x py-20 md:py-28">
-        <div className="space-y-20 md:space-y-28">
+        <div className="max-w-3xl">
+          <p className="eyebrow">Commercial crops</p>
+          <h2 className="mt-3 font-display text-3xl md:text-4xl">Commercial Crops</h2>
+          <p className="mt-4 text-muted-foreground md:text-lg">
+            Our established production lines, grown to a consistent wholesale specification for
+            retailers, distributors, processors and food-service buyers.
+          </p>
+        </div>
+
+        <div className="mt-16 space-y-20 md:space-y-28">
+
           {products.map((p, i) => (
             <article key={p.name} className={`grid gap-10 md:grid-cols-12 md:items-center ${i % 2 ? "md:[&>div:first-child]:order-2" : ""}`}>
               <div className="md:col-span-6">
