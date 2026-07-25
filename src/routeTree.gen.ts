@@ -10,11 +10,15 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as WhyUsRouteImport } from './routes/why-us'
+import { Route as TermsRouteImport } from './routes/terms'
 import { Route as SustainabilityRouteImport } from './routes/sustainability'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ProjectRouteImport } from './routes/project'
 import { Route as ProduceRouteImport } from './routes/produce'
+import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as PartnershipsRouteImport } from './routes/partnerships'
 import { Route as OperationsRouteImport } from './routes/operations'
+import { Route as NewsRouteImport } from './routes/news'
 import { Route as FundingRouteImport } from './routes/funding'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AboutRouteImport } from './routes/about'
@@ -23,6 +27,11 @@ import { Route as IndexRouteImport } from './routes/index'
 const WhyUsRoute = WhyUsRouteImport.update({
   id: '/why-us',
   path: '/why-us',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SustainabilityRoute = SustainabilityRouteImport.update({
@@ -45,9 +54,24 @@ const ProduceRoute = ProduceRouteImport.update({
   path: '/produce',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PartnershipsRoute = PartnershipsRouteImport.update({
+  id: '/partnerships',
+  path: '/partnerships',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const OperationsRoute = OperationsRouteImport.update({
   id: '/operations',
   path: '/operations',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NewsRoute = NewsRouteImport.update({
+  id: '/news',
+  path: '/news',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FundingRoute = FundingRouteImport.update({
@@ -76,11 +100,15 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/funding': typeof FundingRoute
+  '/news': typeof NewsRoute
   '/operations': typeof OperationsRoute
+  '/partnerships': typeof PartnershipsRoute
+  '/privacy': typeof PrivacyRoute
   '/produce': typeof ProduceRoute
   '/project': typeof ProjectRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sustainability': typeof SustainabilityRoute
+  '/terms': typeof TermsRoute
   '/why-us': typeof WhyUsRoute
 }
 export interface FileRoutesByTo {
@@ -88,11 +116,15 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/funding': typeof FundingRoute
+  '/news': typeof NewsRoute
   '/operations': typeof OperationsRoute
+  '/partnerships': typeof PartnershipsRoute
+  '/privacy': typeof PrivacyRoute
   '/produce': typeof ProduceRoute
   '/project': typeof ProjectRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sustainability': typeof SustainabilityRoute
+  '/terms': typeof TermsRoute
   '/why-us': typeof WhyUsRoute
 }
 export interface FileRoutesById {
@@ -101,11 +133,15 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/funding': typeof FundingRoute
+  '/news': typeof NewsRoute
   '/operations': typeof OperationsRoute
+  '/partnerships': typeof PartnershipsRoute
+  '/privacy': typeof PrivacyRoute
   '/produce': typeof ProduceRoute
   '/project': typeof ProjectRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sustainability': typeof SustainabilityRoute
+  '/terms': typeof TermsRoute
   '/why-us': typeof WhyUsRoute
 }
 export interface FileRouteTypes {
@@ -115,11 +151,15 @@ export interface FileRouteTypes {
     | '/about'
     | '/contact'
     | '/funding'
+    | '/news'
     | '/operations'
+    | '/partnerships'
+    | '/privacy'
     | '/produce'
     | '/project'
     | '/sitemap.xml'
     | '/sustainability'
+    | '/terms'
     | '/why-us'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -127,11 +167,15 @@ export interface FileRouteTypes {
     | '/about'
     | '/contact'
     | '/funding'
+    | '/news'
     | '/operations'
+    | '/partnerships'
+    | '/privacy'
     | '/produce'
     | '/project'
     | '/sitemap.xml'
     | '/sustainability'
+    | '/terms'
     | '/why-us'
   id:
     | '__root__'
@@ -139,11 +183,15 @@ export interface FileRouteTypes {
     | '/about'
     | '/contact'
     | '/funding'
+    | '/news'
     | '/operations'
+    | '/partnerships'
+    | '/privacy'
     | '/produce'
     | '/project'
     | '/sitemap.xml'
     | '/sustainability'
+    | '/terms'
     | '/why-us'
   fileRoutesById: FileRoutesById
 }
@@ -152,11 +200,15 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   ContactRoute: typeof ContactRoute
   FundingRoute: typeof FundingRoute
+  NewsRoute: typeof NewsRoute
   OperationsRoute: typeof OperationsRoute
+  PartnershipsRoute: typeof PartnershipsRoute
+  PrivacyRoute: typeof PrivacyRoute
   ProduceRoute: typeof ProduceRoute
   ProjectRoute: typeof ProjectRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SustainabilityRoute: typeof SustainabilityRoute
+  TermsRoute: typeof TermsRoute
   WhyUsRoute: typeof WhyUsRoute
 }
 
@@ -167,6 +219,13 @@ declare module '@tanstack/react-router' {
       path: '/why-us'
       fullPath: '/why-us'
       preLoaderRoute: typeof WhyUsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/sustainability': {
@@ -197,11 +256,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProduceRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/partnerships': {
+      id: '/partnerships'
+      path: '/partnerships'
+      fullPath: '/partnerships'
+      preLoaderRoute: typeof PartnershipsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/operations': {
       id: '/operations'
       path: '/operations'
       fullPath: '/operations'
       preLoaderRoute: typeof OperationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/news': {
+      id: '/news'
+      path: '/news'
+      fullPath: '/news'
+      preLoaderRoute: typeof NewsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/funding': {
@@ -240,11 +320,15 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   ContactRoute: ContactRoute,
   FundingRoute: FundingRoute,
+  NewsRoute: NewsRoute,
   OperationsRoute: OperationsRoute,
+  PartnershipsRoute: PartnershipsRoute,
+  PrivacyRoute: PrivacyRoute,
   ProduceRoute: ProduceRoute,
   ProjectRoute: ProjectRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   SustainabilityRoute: SustainabilityRoute,
+  TermsRoute: TermsRoute,
   WhyUsRoute: WhyUsRoute,
 }
 export const routeTree = rootRouteImport

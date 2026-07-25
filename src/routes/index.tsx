@@ -78,7 +78,7 @@ function Hero() {
           alt="Cayenne chilli field at golden hour"
           width={1920}
           height={1080}
-          className="h-full w-full origin-center scale-105 object-cover motion-safe:animate-[scale-in_1.6s_ease-out]"
+          className="h-full w-full scale-105 object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[oklch(0.18_0.03_150/0.82)] via-[oklch(0.18_0.03_150/0.55)] to-[oklch(0.18_0.03_150/0.9)]" />
       </div>
@@ -260,7 +260,7 @@ function ProducePreview() {
   );
 }
 
-export const operationSteps = [
+const operationSteps = [
   { icon: Sprout, title: "Seedling Nursery", body: "Healthy, vigorous transplants propagated under controlled conditions." },
   { icon: Warehouse, title: "Protected Cultivation", body: "Shade-house growing that stabilises quality through the season." },
   { icon: Tractor, title: "Open Field Production", body: "Planned rotations and disciplined field management at scale." },
@@ -383,7 +383,7 @@ function Sustainability() {
   );
 }
 
-export const leadership = [
+const leadership = [
   {
     name: "Karabo Molamu",
     role: "Founder & Managing Director",
