@@ -25,6 +25,7 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as NewsIndexRouteImport } from './routes/news/index'
+import { Route as NewsSlugRouteImport } from './routes/news/$slug'
 import { Route as AuthenticatedAdminIndexRouteImport } from './routes/_authenticated/admin/index'
 import { Route as AuthenticatedAdminArticleIdRouteImport } from './routes/_authenticated/admin/$articleId'
 import { Route as ApiPublicNewsImageSplatRouteImport } from './routes/api/public/news-image/$'
@@ -108,6 +109,11 @@ const NewsIndexRoute = NewsIndexRouteImport.update({
   path: '/news/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const NewsSlugRoute = NewsSlugRouteImport.update({
+  id: '/news/$slug',
+  path: '/news/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AuthenticatedAdminIndexRoute = AuthenticatedAdminIndexRouteImport.update({
   id: '/admin/',
   path: '/admin/',
@@ -140,6 +146,7 @@ export interface FileRoutesByFullPath {
   '/sustainability': typeof SustainabilityRoute
   '/terms': typeof TermsRoute
   '/why-us': typeof WhyUsRoute
+  '/news/$slug': typeof NewsSlugRoute
   '/news/': typeof NewsIndexRoute
   '/admin/$articleId': typeof AuthenticatedAdminArticleIdRoute
   '/admin/': typeof AuthenticatedAdminIndexRoute
@@ -160,6 +167,7 @@ export interface FileRoutesByTo {
   '/sustainability': typeof SustainabilityRoute
   '/terms': typeof TermsRoute
   '/why-us': typeof WhyUsRoute
+  '/news/$slug': typeof NewsSlugRoute
   '/news': typeof NewsIndexRoute
   '/admin/$articleId': typeof AuthenticatedAdminArticleIdRoute
   '/admin': typeof AuthenticatedAdminIndexRoute
@@ -182,6 +190,7 @@ export interface FileRoutesById {
   '/sustainability': typeof SustainabilityRoute
   '/terms': typeof TermsRoute
   '/why-us': typeof WhyUsRoute
+  '/news/$slug': typeof NewsSlugRoute
   '/news/': typeof NewsIndexRoute
   '/_authenticated/admin/$articleId': typeof AuthenticatedAdminArticleIdRoute
   '/_authenticated/admin/': typeof AuthenticatedAdminIndexRoute
@@ -204,6 +213,7 @@ export interface FileRouteTypes {
     | '/sustainability'
     | '/terms'
     | '/why-us'
+    | '/news/$slug'
     | '/news/'
     | '/admin/$articleId'
     | '/admin/'
@@ -224,6 +234,7 @@ export interface FileRouteTypes {
     | '/sustainability'
     | '/terms'
     | '/why-us'
+    | '/news/$slug'
     | '/news'
     | '/admin/$articleId'
     | '/admin'
@@ -245,6 +256,7 @@ export interface FileRouteTypes {
     | '/sustainability'
     | '/terms'
     | '/why-us'
+    | '/news/$slug'
     | '/news/'
     | '/_authenticated/admin/$articleId'
     | '/_authenticated/admin/'
@@ -267,6 +279,7 @@ export interface RootRouteChildren {
   SustainabilityRoute: typeof SustainabilityRoute
   TermsRoute: typeof TermsRoute
   WhyUsRoute: typeof WhyUsRoute
+  NewsSlugRoute: typeof NewsSlugRoute
   NewsIndexRoute: typeof NewsIndexRoute
   ApiPublicNewsImageSplatRoute: typeof ApiPublicNewsImageSplatRoute
 }
@@ -385,6 +398,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof NewsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/news/$slug': {
+      id: '/news/$slug'
+      path: '/news/$slug'
+      fullPath: '/news/$slug'
+      preLoaderRoute: typeof NewsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/_authenticated/admin/': {
       id: '/_authenticated/admin/'
       path: '/admin'
@@ -438,6 +458,7 @@ const rootRouteChildren: RootRouteChildren = {
   SustainabilityRoute: SustainabilityRoute,
   TermsRoute: TermsRoute,
   WhyUsRoute: WhyUsRoute,
+  NewsSlugRoute: NewsSlugRoute,
   NewsIndexRoute: NewsIndexRoute,
   ApiPublicNewsImageSplatRoute: ApiPublicNewsImageSplatRoute,
 }
