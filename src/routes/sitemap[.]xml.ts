@@ -34,7 +34,13 @@ export const Route = createFileRoute("/sitemap.xml")({
           { path: "/privacy", changefreq: "monthly", priority: "0.3" },
           { path: "/terms", changefreq: "monthly", priority: "0.3" },
         ];
+
+        for (const a of articles ?? []) {
+          entries.push({ path: `/news/${a.slug}`, changefreq: "monthly", priority: "0.5" });
+        }
+
         const urls = entries.map((e) =>
+
           [
             `  <url>`,
             `    <loc>${BASE_URL}${e.path}</loc>`,
