@@ -12,7 +12,7 @@ const articlesQuery = queryOptions({
   queryFn: () => listPublishedArticles(),
 });
 
-export const Route = createFileRoute("/news")({
+export const Route = createFileRoute("/news/")({
   head: () => ({
     meta: [
       { title: "News & Updates — MegaYield Farms" },
