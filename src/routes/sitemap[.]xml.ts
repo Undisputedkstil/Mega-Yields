@@ -13,6 +13,12 @@ export const Route = createFileRoute("/sitemap.xml")({
   server: {
     handlers: {
       GET: async () => {
+        const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+        const { data: articles } = await supabaseAdmin
+          .from("articles")
+          .select("slug")
+          .eq("published", true);
+
         const entries: SitemapEntry[] = [
           { path: "/", changefreq: "weekly", priority: "1.0" },
           { path: "/about", changefreq: "monthly", priority: "0.8" },
@@ -28,7 +34,13 @@ export const Route = createFileRoute("/sitemap.xml")({
           { path: "/privacy", changefreq: "monthly", priority: "0.3" },
           { path: "/terms", changefreq: "monthly", priority: "0.3" },
         ];
+
+        for (const a of articles ?? []) {
+          entries.push({ path: `/news/${a.slug}`, changefreq: "monthly", priority: "0.5" });
+        }
+
         const urls = entries.map((e) =>
+
           [
             `  <url>`,
             `    <loc>${BASE_URL}${e.path}</loc>`,
