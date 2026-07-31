@@ -18,30 +18,69 @@ export const Route = createFileRoute("/news/$slug")({
     if (!article) throw notFound();
     return { article };
   },
-  head: ({ loaderData }) => {
+  head: ({ params, loaderData }) => {
     const a = loaderData?.article;
+    const SITE = "https://awesome-site-quest.lovable.app";
+    const url = `${SITE}/news/${params.slug}`;
     const title = a ? `${a.title} — MegaYield Farms` : "Article — MegaYield Farms";
-    const description =
-      a?.excerpt || "News and production updates from MegaYield Farms in Gauteng, South Africa.";
-    const absoluteImage =
-      a?.hero_image_url && /^https:\/\//.test(a.hero_image_url) ? a.hero_image_url : null;
+    const description = (
+      a?.excerpt || "News and production updates from MegaYield Farms in Gauteng, South Africa."
+    ).slice(0, 158);
+    const hero = a?.hero_image_url?.trim();
+    const image = hero
+      ? /^https?:\/\//.test(hero)
+        ? hero
+        : `${SITE}${hero.startsWith("/") ? "" : "/"}${hero}`
+      : null;
 
     return {
       meta: [
         { title },
-        { name: "description", content: description.slice(0, 158) },
+        { name: "description", content: description },
         { property: "og:type", content: "article" },
         { property: "og:title", content: title },
-        { property: "og:description", content: description.slice(0, 158) },
-        ...(absoluteImage
+        { property: "og:description", content: description },
+        { property: "og:url", content: url },
+        { property: "og:site_name", content: "MegaYield Farms" },
+        ...(a?.published_at
+          ? [{ property: "article:published_time", content: a.published_at }]
+          : []),
+        ...(a?.category ? [{ property: "article:section", content: a.category }] : []),
+        { name: "twitter:card", content: image ? "summary_large_image" : "summary" },
+        { name: "twitter:title", content: title },
+        { name: "twitter:description", content: description },
+        ...(image
           ? [
-              { property: "og:image", content: absoluteImage },
-              { name: "twitter:image", content: absoluteImage },
+              { property: "og:image", content: image },
+              { property: "og:image:alt", content: a?.title ?? "MegaYield Farms" },
+              { name: "twitter:image", content: image },
+              { name: "twitter:image:alt", content: a?.title ?? "MegaYield Farms" },
             ]
           : []),
       ],
+      links: [{ rel: "canonical", href: url }],
+      scripts: a
+        ? [
+            {
+              type: "application/ld+json",
+              children: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "NewsArticle",
+                headline: a.title,
+                description,
+                datePublished: a.published_at,
+                dateModified: a.updated_at ?? a.published_at,
+                articleSection: a.category,
+                ...(image ? { image: [image] } : {}),
+                mainEntityOfPage: url,
+                publisher: { "@type": "Organization", name: "MegaYield Farms" },
+              }),
+            },
+          ]
+        : [],
     };
   },
+
   notFoundComponent: () => (
     <div className="min-h-screen">
       <SiteNav />
