@@ -2,24 +2,41 @@ interface Props {
   eyebrow: string;
   title: string;
   intro?: string;
+  /** Optional image rendered as a wide editorial band under the title. */
+  image?: string;
+  imageAlt?: string;
+  caption?: string;
 }
 
-export function PageHeader({ eyebrow, title, intro }: Props) {
+export function PageHeader({ eyebrow, title, intro, image, imageAlt, caption }: Props) {
   return (
-    <section className="relative overflow-hidden bg-[oklch(0.22_0.04_148)] text-[oklch(0.97_0.018_90)]">
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-30"
-        style={{
-          background:
-            "radial-gradient(60% 60% at 80% 0%, oklch(0.74 0.13 78 / 0.35), transparent 60%), radial-gradient(40% 60% at 0% 100%, oklch(0.5 0.12 145 / 0.4), transparent 60%)",
-        }}
-      />
-      <div className="container-x relative py-20 md:py-28">
-        <p className="eyebrow text-[var(--color-gold)]">{eyebrow}</p>
-        <h1 className="mt-4 max-w-3xl font-display text-4xl leading-[1.05] md:text-6xl">{title}</h1>
-        {intro && <p className="mt-5 max-w-2xl text-base text-white/75 md:text-lg">{intro}</p>}
+    <section className="border-b border-border">
+      <div className="container-x grid gap-8 py-14 md:grid-cols-12 md:py-20">
+        <div className="md:col-span-5">
+          <p className="eyebrow">{eyebrow}</p>
+          <h1 className="mt-5 display-lg">{title}</h1>
+        </div>
+        {intro && (
+          <div className="md:col-span-6 md:col-start-7 md:self-end">
+            <p className="lede max-w-xl">{intro}</p>
+          </div>
+        )}
       </div>
+      {image && (
+        <figure className="border-t border-border">
+          <img
+            src={image}
+            alt={imageAlt ?? ""}
+            className="h-[38vh] w-full object-cover md:h-[52vh]"
+            loading="eager"
+          />
+          {caption && (
+            <figcaption className="container-x py-3 font-mono text-[0.6875rem] uppercase tracking-[0.12em] text-muted-foreground">
+              {caption}
+            </figcaption>
+          )}
+        </figure>
+      )}
     </section>
   );
 }
