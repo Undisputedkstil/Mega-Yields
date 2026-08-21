@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
 
-const BASE_URL = "";
+const BASE_URL = "https://megayieldfarms.co.za";
 
 interface SitemapEntry {
   path: string;
@@ -9,45 +9,31 @@ interface SitemapEntry {
   priority?: string;
 }
 
+const entries: SitemapEntry[] = [
+  { path: "/", changefreq: "weekly", priority: "1.0" },
+  { path: "/about", changefreq: "monthly", priority: "0.9" },
+  { path: "/produce", changefreq: "monthly", priority: "0.9" },
+  { path: "/operations", changefreq: "monthly", priority: "0.8" },
+  { path: "/partnerships", changefreq: "monthly", priority: "0.8" },
+  { path: "/contact", changefreq: "monthly", priority: "0.7" },
+  { path: "/privacy", changefreq: "monthly", priority: "0.3" },
+  { path: "/terms", changefreq: "monthly", priority: "0.3" },
+];
+
 export const Route = createFileRoute("/sitemap.xml")({
   server: {
     handlers: {
       GET: async () => {
-        const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
-        const { data: articles } = await supabaseAdmin
-          .from("articles")
-          .select("slug")
-          .eq("published", true);
-
-        const entries: SitemapEntry[] = [
-          { path: "/", changefreq: "weekly", priority: "1.0" },
-          { path: "/about", changefreq: "monthly", priority: "0.8" },
-          { path: "/produce", changefreq: "monthly", priority: "0.8" },
-          { path: "/operations", changefreq: "monthly", priority: "0.8" },
-          { path: "/sustainability", changefreq: "monthly", priority: "0.7" },
-          { path: "/news", changefreq: "weekly", priority: "0.6" },
-          { path: "/partnerships", changefreq: "monthly", priority: "0.8" },
-          { path: "/project", changefreq: "monthly", priority: "0.6" },
-          { path: "/why-us", changefreq: "monthly", priority: "0.7" },
-          { path: "/funding", changefreq: "monthly", priority: "0.8" },
-          { path: "/contact", changefreq: "monthly", priority: "0.7" },
-          { path: "/privacy", changefreq: "monthly", priority: "0.3" },
-          { path: "/terms", changefreq: "monthly", priority: "0.3" },
-        ];
-
-        for (const a of articles ?? []) {
-          entries.push({ path: `/news/${a.slug}`, changefreq: "monthly", priority: "0.5" });
-        }
-
         const urls = entries.map((e) =>
-
           [
             `  <url>`,
             `    <loc>${BASE_URL}${e.path}</loc>`,
             e.changefreq ? `    <changefreq>${e.changefreq}</changefreq>` : null,
             e.priority ? `    <priority>${e.priority}</priority>` : null,
             `  </url>`,
-          ].filter(Boolean).join("\n"),
+          ]
+            .filter(Boolean)
+            .join("\n"),
         );
         const xml = [
           `<?xml version="1.0" encoding="UTF-8"?>`,
