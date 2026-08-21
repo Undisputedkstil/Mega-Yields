@@ -52,10 +52,6 @@ const companyInfo: [string, string][] = [
   ["Contact", "hello@megayieldfarms.co.za · 060 486 5455"],
 ];
 
-export default function _unused() {
-  return null;
-}
-
 function AboutPage() {
   return (
     <>
