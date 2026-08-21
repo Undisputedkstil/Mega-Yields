@@ -1,248 +1,217 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteNav } from "@/components/SiteNav";
 import { SiteFooter } from "@/components/SiteFooter";
 import { PageHeader } from "@/components/PageHeader";
+import farmAerial from "@/assets/farm-aerial.jpg";
 import handsImg from "@/assets/harvest-hands.jpg";
+
+const SITE = "https://megayieldfarms.co.za";
+const DESC =
+  "MegaYield Farms (Pty) Ltd is an early-stage agricultural enterprise in Gauteng, South Africa, growing chilli peppers and tomatoes for commercial fresh-produce supply.";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About — MegaYield Farms" },
-      { name: "description", content: "The story, mission, vision, values and team behind MegaYield Farms — a youth-led agricultural enterprise in Pretoria, South Africa." },
+      { title: "About MegaYield Farms | Agricultural Company in South Africa" },
+      { name: "description", content: DESC },
       { property: "og:title", content: "About MegaYield Farms" },
-      { property: "og:description", content: "Six years of focused agriculture, scaled by purpose." },
-      { property: "og:image", content: handsImg },
+      { property: "og:description", content: DESC },
+      { property: "og:url", content: `${SITE}/about` },
     ],
+    links: [{ rel: "canonical", href: `${SITE}/about` }],
   }),
   component: AboutPage,
 });
 
-const timeline = [
+const leadership = [
   {
-    year: "2019–2020",
-    title: "Foundation",
-    bullets: [
-      "Launched with backyard poultry operation (10 → 400 birds)",
-      "Developed core farm management skills",
-      "Built operational systems and discipline",
-      "First community support: surplus birds shared with local families",
-    ],
+    name: "Karabo Molamu",
+    role: "Founder & Managing Director",
+    bio: "Leads company strategy, commercial development and day-to-day direction of the farming operation.",
   },
   {
-    year: "2021–2023",
-    title: "Crop trials & learning",
-    bullets: [
-      "Systematic trials across spinach, maize, chilli, tomatoes, onions",
-      "Mastered crop production techniques",
-      "Built market intelligence and sales relationships",
-      "Refined operational procedures",
-      "Began donating surplus spinach to local community members",
-    ],
+    name: "Zwelihle Zulu",
+    role: "Co-Founder & Operations Director",
+    bio: "Responsible for production planning, field operations, harvest scheduling and quality of output.",
   },
   {
-    year: "2024",
-    title: "Land partnership & infrastructure",
-    bullets: [
-      "Secured 8-hectare land partnership (Kgomodiile Projects)",
-      "Began infrastructure development",
-      "Transitioned to continuous production cycles",
-      "Established reliable supply relationships",
-      "Formalized community donation approach",
-    ],
-  },
-  {
-    year: "2025–Present",
-    title: "Commercial production & community impact",
-    bullets: [
-      "Scaled chilli production by 400% (commercial viability proven)",
-      "Established B2B supply relationships",
-      "Maintained continuous production discipline",
-      "Partnered with NGO (Vuka Africa Youth Hub) for produce donation",
-      "Employed seasonal workers from Winterveld",
-    ],
+    name: "Gilbert Sehoole",
+    role: "Mentor & Agricultural Supervisor",
+    bio: "Provides agronomic guidance and hands-on supervision across crop establishment and management.",
   },
 ];
 
-const values = [
-  { t: "Consistency", b: "We build trust through reliable production cycles and dependable supply. Our reputation is built on delivery performance, not promises." },
-  { t: "Focus", b: "We concentrate our resources on what works. Chilli pepper production is our core. We do not chase trends — we execute our strategy with discipline." },
-  { t: "Discipline", b: "Every decision is grounded in practical experience, honest numbers, and long-term thinking. We avoid shortcuts and build sustainable operations." },
-  { t: "Growth with purpose", b: "We scale deliberately — not for its own sake, but to build something that lasts and creates opportunity." },
-  { t: "Community first", b: "Keeping people fed is our peace of mind. Community benefit is not separate from business success — it is part of how we measure it." },
+const companyInfo: [string, string][] = [
+  ["Registered name", "MegaYield Farms (Pty) Ltd"],
+  ["Registration number", "CIPC 2025/964922/07"],
+  ["Country", "South Africa"],
+  ["Province", "Gauteng"],
+  ["Sector", "Agriculture — fresh produce"],
+  ["Current crops", "Chilli peppers, tomatoes, pilot crops"],
+  ["Location", "Plot 787 Ten Morgan, Winterveld, Pretoria"],
+  ["Contact", "hello@megayieldfarms.co.za · 060 486 5455"],
 ];
+
+export default function _unused() {
+  return null;
+}
 
 function AboutPage() {
   return (
-    <div className="min-h-screen">
+    <>
       <SiteNav />
-      <PageHeader
-        eyebrow="About MegaYield"
-        title="A focused agricultural enterprise, built on purpose."
-        intro="Founded in 2019, MegaYield Farms is a youth-led South African business growing produce, jobs, and futures from Plot 787 in Winterveld, Pretoria."
-      />
+      <main>
+        <PageHeader
+          eyebrow="Company profile"
+          title="An agricultural business being built in the open."
+          intro="MegaYield Farms is an early-stage South African agricultural enterprise. We grow and supply fresh produce today, and we are honest about what we are still building."
+          image={farmAerial}
+          imageAlt="Planted fields at MegaYield Farms in Winterveld, Gauteng"
+          caption="Winterveld, Pretoria — Gauteng, South Africa"
+        />
 
-      <section className="container-x py-20 md:py-28">
-        <div className="grid gap-12 md:grid-cols-12">
-          <div className="md:col-span-7">
-            <p className="eyebrow">Our story</p>
-            <h2 className="mt-3 font-display text-3xl leading-tight md:text-4xl">
-              Six years of getting one thing right, so we could grow what comes next.
-            </h2>
-            <p className="mt-5 text-muted-foreground">
-              MegaYield began with a simple bet: that disciplined, consistent production of a
-              single high-demand crop would earn the right to scale. After six years of refining
-              cayenne chilli operations, that bet is paying off — with formal market interest
-              from leading South African supermarkets and a clear pathway to expansion.
+        <Section number="01" title="Our Story">
+          <div className="space-y-5 text-[0.9375rem] leading-relaxed text-muted-foreground">
+            <p>
+              MegaYield Farms began with a small planted area, a mentor, and a conviction that South
+              Africa needs more young, disciplined commercial growers. We started with chilli
+              peppers because the crop rewards attention: it demands consistent irrigation, careful
+              scouting and disciplined harvesting.
             </p>
-            <p className="mt-4 text-muted-foreground">
-              We are registered with CIPC (2025/964922/07), youth-led, and based on 8 hectares
-              of land in Winterveld — of which 2.5 are currently in production.
+            <p>
+              Since then we have expanded planting, added tomatoes as a second production focus, and
+              begun trialling additional crops at pilot scale. Selected produce is already supplied
+              to customers where available.
+            </p>
+            <p>
+              We remain early. Our growth is deliberately phased — each expansion follows proven
+              demand and the infrastructure to support it.
             </p>
           </div>
-          <div className="md:col-span-5">
-            <img src={handsImg} alt="Freshly harvested chillies" loading="lazy" className="aspect-[4/5] w-full rounded-2xl object-cover shadow-[var(--shadow-lift)]" />
-          </div>
-        </div>
-      </section>
+        </Section>
 
-      <section className="bg-[oklch(0.97_0.018_90)] py-20 md:py-28">
-        <div className="container-x">
-          <p className="eyebrow">Operational track record</p>
-          <h2 className="mt-3 font-display text-3xl md:text-4xl">Tested, learned, refined, and scaled — with community impact in mind.</h2>
-          <p className="mt-4 max-w-2xl text-muted-foreground">
-            MegaYield Farms has built capability through systematic execution across six years
-            of disciplined operations.
-          </p>
-          <ol className="mt-10 grid gap-5 md:grid-cols-2">
-            {timeline.map((t) => (
-              <li key={t.year} className="rounded-2xl border border-border bg-card p-7">
-                <div className="font-display text-2xl text-[var(--color-gold)]">{t.year}</div>
-                <h3 className="mt-2 font-display text-xl">{t.title}</h3>
-                <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
-                  {t.bullets.map((b) => (
-                    <li key={b} className="flex gap-2">
-                      <span className="mt-2 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
-                      <span>{b}</span>
-                    </li>
-                  ))}
-                </ul>
+        <Section number="02" title="What We Do">
+          <div className="grid gap-8 md:grid-cols-2">
+            <p className="text-[0.9375rem] leading-relaxed text-muted-foreground">
+              We grow fresh produce for commercial supply. Chilli peppers are our flagship crop and
+              tomatoes our second production focus, with additional crops under development. We
+              handle production planning, crop establishment and management, harvesting, quality
+              handling and delivery to customers.
+            </p>
+            <p className="text-[0.9375rem] leading-relaxed text-muted-foreground">
+              We supply wholesalers, retailers, processors and food service buyers. Because we are
+              scaling, availability varies by crop and production cycle — volumes and specifications
+              are always confirmed directly with our team rather than published.
+            </p>
+          </div>
+        </Section>
+
+        <Section number="03" title="Our Approach" image={handsImg} imageAlt="Hand-harvested chillies being sorted">
+          <ul className="divide-y divide-border">
+            {[
+              ["Consistency", "The same standard every cycle, because buyers plan around it."],
+              ["Discipline", "Records, schedules and reviews rather than improvisation."],
+              ["Focus", "Depth in a few crops before breadth across many."],
+              ["Growth with purpose", "Expansion only where demand and capability meet."],
+              ["Community first", "Local employment and skills, growing as the operation grows."],
+            ].map(([t, d]) => (
+              <li key={t} className="py-4">
+                <h3 className="font-display text-xl">{t}</h3>
+                <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{d}</p>
               </li>
             ))}
-          </ol>
-        </div>
-      </section>
+          </ul>
+        </Section>
 
-      <section className="container-x py-20 md:py-28">
-        <div className="grid gap-12 md:grid-cols-2">
-          <div className="rounded-3xl border border-border bg-card p-10">
-            <p className="eyebrow">Our mission</p>
-            <p className="mt-4 font-display text-2xl leading-snug">
-              To deliver consistent, high-quality agricultural output through efficient farming
-              systems, disciplined execution, and unwavering commitment to supply consistency —
-              while building sustainable value for partners, markets, and communities.
-            </p>
-            <p className="mt-5 font-display text-lg text-[var(--color-gold)]">
-              Keeping people fed is our peace of mind.
-            </p>
-            <p className="mt-4 text-sm text-muted-foreground">
-              We exist to solve a real problem: reliable chilli supply in a market where demand
-              consistently exceeds local availability. And a second one: creating economic and
-              learning opportunities in communities where they're needed.
-            </p>
-          </div>
-          <div className="rounded-3xl bg-primary p-10 text-primary-foreground">
-            <p className="eyebrow text-[var(--color-gold)]">Our vision</p>
-            <p className="mt-4 font-display text-2xl leading-snug">
-              To establish MegaYield Farms as the preferred chilli pepper supplier across
-              Gauteng by 2028 — recognised for exceptional reliability, consistent quality,
-              scalable production capacity, and meaningful community impact.
-            </p>
-            <ul className="mt-6 space-y-2 text-sm text-white/85">
-              <li>• Buyers trust us because our chilli peppers are the reliable choice</li>
-              <li>• Communities benefit from jobs we create and produce we donate</li>
-              <li>• Young people learn through apprenticeships and agricultural skills training</li>
-              <li>• Our growth strengthens food security, not just profit margins</li>
-            </ul>
-          </div>
-        </div>
-
-        <div className="mt-16">
-          <p className="eyebrow">Our values</p>
-          <h2 className="mt-3 font-display text-3xl md:text-4xl">How we operate, every day.</h2>
-          <div className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-            {values.map((v) => (
-              <div key={v.t} className="rounded-2xl border border-border bg-card p-7">
-                <h3 className="font-display text-xl">{v.t}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{v.b}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-[oklch(0.97_0.018_90)] py-20 md:py-28">
-        <div className="container-x">
-          <p className="eyebrow">Leadership team</p>
-          <h2 className="mt-3 font-display text-3xl md:text-4xl">The people behind MegaYield Farms</h2>
-          <p className="mt-3 max-w-2xl text-muted-foreground">
-            A focused leadership team combining strategic vision, operational discipline,
-            and deep agricultural mentorship — driving MegaYield Farms toward long-term
-            commercial and community impact.
+        <Section number="04" title="Our Vision">
+          <blockquote className="border-l-2 border-[var(--color-clay)] pl-6 font-display text-2xl leading-snug md:text-3xl">
+            To establish MegaYield Farms as a preferred chilli pepper and fresh-produce supplier in
+            Gauteng — recognised for reliability, quality and the discipline behind every delivery.
+          </blockquote>
+          <p className="mt-8 text-[0.9375rem] leading-relaxed text-muted-foreground">
+            Our mission is to deliver consistent, high-quality agricultural output through efficient
+            farming systems, while creating dependable work and skills in the communities around us.
+            Keeping people fed is our peace of mind.
           </p>
-          <div className="mt-10 grid gap-6 md:grid-cols-3">
-            {[
-              {
-                name: "Karabo Molamu",
-                role: "Founder & Managing Director",
-                bio: "Karabo Molamu founded MegaYield Farms with a vision of building a modern, sustainable agricultural business focused on producing high-quality fresh produce for South African retail, wholesale, and commercial markets. He leads the company's long-term strategy, business development, partnerships, innovation, and overall growth.",
-                initials: "KM",
-              },
-              {
-                name: "Zwelihle Zulu",
-                role: "Co-Founder & Operations Director",
-                bio: "Zwelihle Zulu oversees the day-to-day farming operations, production planning, crop management, and operational execution. He ensures that farming activities are carried out efficiently while maintaining the company's quality and sustainability standards.",
-                initials: "ZZ",
-              },
-              {
-                name: "Gilbert Sehoole",
-                role: "Mentor & Agricultural Supervisor",
-                bio: "Gilbert Sehoole provides strategic mentorship and agricultural guidance, supporting production planning, best farming practices, and operational development while helping strengthen the long-term growth of MegaYield Farms.",
-                initials: "GS",
-              },
-            ].map((p) => (
-              <article
-                key={p.name}
-                className="group relative flex flex-col overflow-hidden rounded-3xl border border-border bg-card p-8 shadow-[var(--shadow-soft)] transition-all duration-300 hover:-translate-y-1 hover:border-[var(--color-gold)]/40 hover:shadow-[var(--shadow-lift)]"
-              >
-                <span
-                  aria-hidden
-                  className="absolute inset-x-0 top-0 h-1 origin-left scale-x-0 bg-gradient-to-r from-primary to-[var(--color-gold)] transition-transform duration-500 group-hover:scale-x-100"
-                />
-                <div className="relative">
-                  <div
-                    aria-hidden
-                    className="absolute -inset-1 rounded-full bg-gradient-to-br from-primary/30 to-[var(--color-gold)]/40 opacity-0 blur-md transition-opacity duration-300 group-hover:opacity-100"
-                  />
-                  <div className="relative flex h-24 w-24 items-center justify-center rounded-full bg-gradient-to-br from-primary to-[var(--color-gold)] font-display text-2xl text-primary-foreground shadow-[var(--shadow-soft)] ring-4 ring-background transition-transform duration-300 group-hover:scale-105">
-                    <span className="tracking-wider">{p.initials}</span>
-                  </div>
+        </Section>
+
+        <Section number="05" title="Leadership">
+          <div className="grid gap-px bg-border sm:grid-cols-3">
+            {leadership.map((p) => (
+              <article key={p.name} className="bg-background pb-6 sm:px-6 sm:pt-6 sm:first:pl-0">
+                <div className="flex h-16 w-16 items-center justify-center bg-[oklch(0.205_0.008_70)] font-display text-xl text-[oklch(0.95_0.008_85)]">
+                  {p.name
+                    .split(" ")
+                    .map((n) => n[0])
+                    .join("")}
                 </div>
-                <h3 className="mt-6 font-display text-2xl leading-tight transition-colors duration-300 group-hover:text-primary">
-                  {p.name}
-                </h3>
-                <p className="mt-1 text-sm font-semibold uppercase tracking-wider text-[var(--color-gold)]">
-                  {p.role}
-                </p>
-                <div className="mt-4 h-px w-10 bg-border transition-all duration-300 group-hover:w-16 group-hover:bg-[var(--color-gold)]" />
-                <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{p.bio}</p>
+                <h3 className="mt-5 font-display text-2xl">{p.name}</h3>
+                <p className="eyebrow mt-2">{p.role}</p>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{p.bio}</p>
               </article>
             ))}
           </div>
-        </div>
-      </section>
+        </Section>
 
-
+        <Section number="06" title="Company Information">
+          <table className="w-full border-collapse text-left text-sm">
+            <caption className="sr-only">MegaYield Farms company at a glance</caption>
+            <tbody>
+              {companyInfo.map(([k, v]) => (
+                <tr key={k} className="border-t border-border align-top">
+                  <th scope="row" className="w-56 py-3.5 pr-6 font-mono text-[0.6875rem] font-medium uppercase tracking-[0.12em] text-muted-foreground">
+                    {k}
+                  </th>
+                  <td className="py-3.5">{v}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          <p className="mt-8 text-sm leading-relaxed text-muted-foreground">
+            We publish only verified company information. For production detail — availability,
+            volumes and supply requirements —{" "}
+            <Link to="/contact" className="border-b border-foreground pb-0.5 text-foreground">
+              contact our team
+            </Link>
+            .
+          </p>
+        </Section>
+      </main>
       <SiteFooter />
-    </div>
+    </>
+  );
+}
+
+function Section({
+  number,
+  title,
+  children,
+  image,
+  imageAlt,
+}: {
+  number: string;
+  title: string;
+  children: React.ReactNode;
+  image?: string;
+  imageAlt?: string;
+}) {
+  return (
+    <section className="border-b border-border">
+      <div className="container-x grid gap-8 py-16 md:grid-cols-12 md:py-20">
+        <div className="md:col-span-4">
+          <p className="eyebrow">{number}</p>
+          <h2 className="mt-4 font-display text-3xl md:text-4xl">{title}</h2>
+          {image && (
+            <img
+              src={image}
+              alt={imageAlt ?? ""}
+              className="mt-8 hidden aspect-4/3 w-full object-cover md:block"
+              loading="lazy"
+            />
+          )}
+        </div>
+        <div className="md:col-span-7 md:col-start-6">{children}</div>
+      </div>
+    </section>
   );
 }
