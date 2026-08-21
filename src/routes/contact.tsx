@@ -3,158 +3,99 @@ import { SiteNav } from "@/components/SiteNav";
 import { SiteFooter } from "@/components/SiteFooter";
 import { PageHeader } from "@/components/PageHeader";
 import { InquiryForm } from "@/components/InquiryForm";
-import { Reveal } from "@/components/Reveal";
-import {
-  Phone,
-  Mail,
-  MapPin,
-  Clock,
-  Facebook,
-  Instagram,
-  Linkedin,
-} from "lucide-react";
+
+const SITE = "https://megayieldfarms.co.za";
+const DESC =
+  "Contact MegaYield Farms for supply enquiries, partnerships and general questions. Winterveld, Pretoria, Gauteng — hello@megayieldfarms.co.za, 060 486 5455.";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact — MegaYield Farms" },
+      { title: "Contact MegaYield Farms | Fresh Produce Supplier, Gauteng" },
+      { name: "description", content: DESC },
+      { property: "og:title", content: "Contact — MegaYield Farms" },
+      { property: "og:description", content: DESC },
+      { property: "og:url", content: `${SITE}/contact` },
+    ],
+    links: [{ rel: "canonical", href: `${SITE}/contact` }],
+    scripts: [
       {
-        name: "description",
-        content:
-          "Contact MegaYield Farms about fresh produce supply, partnerships or a farm visit. Based in Winterveld, Pretoria, Gauteng, South Africa.",
-      },
-      { property: "og:title", content: "Contact MegaYield Farms" },
-      {
-        property: "og:description",
-        content: "Talk to our team about supply volumes, specification and delivery.",
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          name: "MegaYield Farms (Pty) Ltd",
+          url: SITE,
+          email: "hello@megayieldfarms.co.za",
+          telephone: "+27604865455",
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: "Plot 787 Ten Morgan, Winterveld",
+            addressLocality: "Pretoria",
+            addressRegion: "Gauteng",
+            addressCountry: "ZA",
+          },
+        }),
       },
     ],
   }),
   component: ContactPage,
 });
 
+const details: [string, string, string?][] = [
+  ["Email", "hello@megayieldfarms.co.za", "mailto:hello@megayieldfarms.co.za"],
+  ["Phone", "060 486 5455", "tel:+27604865455"],
+  ["Farm", "Plot 787 Ten Morgan, Winterveld, Pretoria"],
+  ["Province", "Gauteng, South Africa"],
+  ["Registration", "MegaYield Farms (Pty) Ltd · 2025/964922/07"],
+];
+
 function ContactPage() {
   return (
-    <div className="min-h-screen">
+    <>
       <SiteNav />
-      <PageHeader
-        eyebrow="Contact"
-        title="Let's start a conversation."
-        intro="Whether you're a buyer, distributor, processor, partner or community organisation — we'd like to hear from you."
-      />
+      <main>
+        <PageHeader
+          eyebrow="Contact"
+          title="Talk to our team."
+          intro="Supply enquiries, partnership conversations and general questions all reach the same team. We reply within one business day."
+        />
 
-      <section className="container-x py-20 md:py-28">
-        <div className="grid gap-12 md:grid-cols-12">
-          <Reveal className="md:col-span-5">
-            <p className="eyebrow">Direct contact</p>
-            <h2 className="mt-3 font-display text-3xl">Reach the team</h2>
-            <ul className="mt-8 space-y-6">
-              <ContactRow icon={Phone} label="Phone" value="060 486 5455" href="tel:+27604865455" />
-              <ContactRow
-                icon={Mail}
-                label="Email"
-                value="hello@megayieldfarms.co.za"
-                href="mailto:hello@megayieldfarms.co.za"
-              />
-              <ContactRow
-                icon={MapPin}
-                label="Business location"
-                value="Plot 787 Ten Morgan, Winterveld, Pretoria, Gauteng, South Africa"
-              />
-              <ContactRow
-                icon={Clock}
-                label="Business hours"
-                value="Monday – Friday · 08h00 – 17h00 (SAST)"
-              />
-            </ul>
-
-            <div className="mt-10">
-              <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-                Follow us
-              </p>
-              <div className="mt-3 flex gap-3">
-                {[
-                  { Icon: Linkedin, label: "LinkedIn" },
-                  { Icon: Facebook, label: "Facebook" },
-                  { Icon: Instagram, label: "Instagram" },
-                ].map(({ Icon, label }) => (
-                  <a
-                    key={label}
-                    href="#"
-                    aria-label={`MegaYield Farms on ${label}`}
-                    className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-border text-muted-foreground transition-colors hover:border-primary hover:text-primary"
-                  >
-                    <Icon className="h-4 w-4" />
-                  </a>
+        <section className="border-b border-border">
+          <div className="container-x grid gap-12 py-16 md:grid-cols-12 md:py-20">
+            <div className="md:col-span-4">
+              <h2 className="font-display text-3xl">Details</h2>
+              <dl className="mt-8">
+                {details.map(([label, value, href]) => (
+                  <div key={label} className="border-t border-border py-4">
+                    <dt className="eyebrow">{label}</dt>
+                    <dd className="mt-1.5 text-[0.9375rem]">
+                      {href ? (
+                        <a href={href} className="link-rule">
+                          {value}
+                        </a>
+                      ) : (
+                        value
+                      )}
+                    </dd>
+                  </div>
                 ))}
-              </div>
-            </div>
-
-            <div className="mt-10 rounded-2xl border border-border bg-[oklch(0.97_0.018_90)] p-6">
-              <p className="eyebrow">Farm visits</p>
-              <p className="mt-2 text-sm text-muted-foreground">
-                Commercial buyers, partners and investors are warmly invited to visit the farm in
-                Winterveld. Select "Schedule a farm visit" in the form to arrange a date.
+              </dl>
+              <p className="mt-8 text-sm leading-relaxed text-muted-foreground">
+                Farm visits are by appointment only. Please arrange a time before travelling.
               </p>
             </div>
-          </Reveal>
 
-          <Reveal delay={120} className="md:col-span-7">
-            <InquiryForm />
-
-            <div className="mt-8 overflow-hidden rounded-3xl border border-border">
-              <div className="grid aspect-[16/9] place-items-center bg-[var(--gradient-hero)] text-center">
-                <div className="px-6">
-                  <MapPin className="mx-auto h-8 w-8 text-[var(--color-gold)]" aria-hidden />
-                  <p className="mt-3 font-display text-xl text-white">Find us in Winterveld</p>
-                  <p className="mt-1 text-sm text-white/70">
-                    Map integration placeholder — Plot 787 Ten Morgan, Pretoria, Gauteng
-                  </p>
-                </div>
+            <div className="md:col-span-7 md:col-start-6">
+              <h2 className="font-display text-3xl">Send a message</h2>
+              <div className="mt-8">
+                <InquiryForm defaultInquiry="General enquiry" />
               </div>
             </div>
-          </Reveal>
-        </div>
-      </section>
-
+          </div>
+        </section>
+      </main>
       <SiteFooter />
-    </div>
-  );
-}
-
-function ContactRow({
-  icon: Icon,
-  label,
-  value,
-  href,
-}: {
-  icon: typeof Phone;
-  label: string;
-  value: string;
-  href?: string;
-}) {
-  const content = (
-    <div className="flex items-start gap-4">
-      <span className="mt-0.5 inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
-        <Icon className="h-5 w-5" />
-      </span>
-      <div className="min-w-0">
-        <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-          {label}
-        </p>
-        <p className="mt-1 text-base text-foreground">{value}</p>
-      </div>
-    </div>
-  );
-  return (
-    <li>
-      {href ? (
-        <a href={href} className="block transition-opacity hover:opacity-80">
-          {content}
-        </a>
-      ) : (
-        content
-      )}
-    </li>
+    </>
   );
 }
