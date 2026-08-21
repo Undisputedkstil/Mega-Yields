@@ -78,18 +78,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { name: "author", content: "MegaYield Farms" },
+      { name: "author", content: "MegaYield Farms (Pty) Ltd" },
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: "MegaYield Farms" },
       { name: "twitter:card", content: "summary_large_image" },
-      { title: "MegaYield Farms — Commercial Fresh Produce, South Africa" },
-      { property: "og:title", content: "MegaYield Farms — Commercial Fresh Produce" },
-      { name: "twitter:title", content: "MegaYield Farms — Commercial Fresh Produce" },
-      { name: "description", content: "MegaYield Farms produces premium fresh vegetables through sustainable farming for wholesale, retail, food service and commercial supply chains in South Africa." },
-      { property: "og:description", content: "MegaYield Farms produces premium fresh vegetables through sustainable farming for wholesale, retail, food service and commercial supply chains in South Africa." },
-      { name: "twitter:description", content: "MegaYield Farms produces premium fresh vegetables through sustainable farming for wholesale, retail, food service and commercial supply chains in South Africa." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/df8e2e48-6dab-4da9-805e-86b815906955/id-preview-ea9b104d--32755c2d-23e1-4cd7-8d3d-42e1b63ebd33.lovable.app-1782514294458.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/df8e2e48-6dab-4da9-805e-86b815906955/id-preview-ea9b104d--32755c2d-23e1-4cd7-8d3d-42e1b63ebd33.lovable.app-1782514294458.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
@@ -97,10 +89,24 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "" },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap",
+      },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          name: "MegaYield Farms (Pty) Ltd",
+          url: "https://megayieldfarms.co.za",
+          description:
+            "South African agricultural company growing chilli peppers, tomatoes and pilot crops for commercial fresh-produce supply.",
+        }),
       },
     ],
   }),
+
   shellComponent: RootShell,
   component: RootComponent,
   notFoundComponent: NotFoundComponent,
