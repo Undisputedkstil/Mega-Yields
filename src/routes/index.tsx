@@ -154,12 +154,12 @@ function HomePage() {
           <div className="container-x pt-20 md:pt-28">
             <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
               <div>
-                <p className="eyebrow">02 — Current production</p>
+              <p className="eyebrow">02 — Current production</p>
                 <h2 className="mt-5 display-lg">What We're Growing</h2>
               </div>
               <p className="max-w-sm text-sm leading-relaxed text-muted-foreground">
-                Availability varies by crop and production cycle. For volumes and specifications,
-                speak to our team directly.
+                Six crops in commercial production, six more under development. Availability varies
+                by crop and cycle — speak to our team for volumes and specifications.
               </p>
             </div>
           </div>
@@ -191,11 +191,11 @@ function HomePage() {
                   className="aspect-3/2 w-full object-cover"
                   loading="lazy"
                 />
-                <p className="eyebrow mt-6">Second production focus</p>
-                <h3 className="mt-2 font-display text-2xl">Tomatoes</h3>
+                <p className="eyebrow mt-6">Commercial range</p>
+                <h3 className="mt-2 font-display text-2xl">Tomatoes & Vegetables</h3>
                 <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                  Grown under shade and open field, scaling alongside chillies as our second
-                  commercial line.
+                  Tomatoes, green peppers, colour peppers, onions and carrots are grown alongside
+                  chillies for steady commercial supply.
                 </p>
               </article>
               <article className="py-8 md:pl-10">
@@ -206,10 +206,10 @@ function HomePage() {
                   loading="lazy"
                 />
                 <p className="eyebrow mt-6">Under development</p>
-                <h3 className="mt-2 font-display text-2xl">Pilot Crops</h3>
+                <h3 className="mt-2 font-display text-2xl">Six Crops in Trial</h3>
                 <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                  Additional crops trialled at small scale; selected produce is supplied where
-                  available.
+                  Beetroot, green beans, potatoes, garlic, spinach and cabbage are trialled before
+                  entering commercial production.
                 </p>
               </article>
             </div>
