@@ -191,11 +191,11 @@ function HomePage() {
                   className="aspect-3/2 w-full object-cover"
                   loading="lazy"
                 />
-                <p className="eyebrow mt-6">Second production focus</p>
-                <h3 className="mt-2 font-display text-2xl">Tomatoes</h3>
+                <p className="eyebrow mt-6">Commercial range</p>
+                <h3 className="mt-2 font-display text-2xl">Tomatoes & Vegetables</h3>
                 <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                  Grown under shade and open field, scaling alongside chillies as our second
-                  commercial line.
+                  Tomatoes, green peppers, colour peppers, onions and carrots are grown alongside
+                  chillies for steady commercial supply.
                 </p>
               </article>
               <article className="py-8 md:pl-10">
