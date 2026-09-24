@@ -154,12 +154,12 @@ function HomePage() {
           <div className="container-x pt-20 md:pt-28">
             <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
               <div>
-                <p className="eyebrow">02 — Current production</p>
+              <p className="eyebrow">02 — Current production</p>
                 <h2 className="mt-5 display-lg">What We're Growing</h2>
               </div>
               <p className="max-w-sm text-sm leading-relaxed text-muted-foreground">
-                Availability varies by crop and production cycle. For volumes and specifications,
-                speak to our team directly.
+                Six crops in commercial production, six more under development. Availability varies
+                by crop and cycle — speak to our team for volumes and specifications.
               </p>
             </div>
           </div>
