@@ -29,6 +29,15 @@ jobs:
       - name: Build website
         run: npm run build
 
+      - name: Check build output
+        run: |
+          echo "Current directory:"
+          pwd
+          echo "Files:"
+          ls -la
+          echo "Dist folder:"
+          ls -la dist
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
