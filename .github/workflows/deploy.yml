@@ -31,20 +31,16 @@ jobs:
 
       - name: Check build output
         run: |
-          echo "Current directory:"
-          pwd
-
-          echo "Files:"
-          ls -la
-
-          echo "Output folder:"
-          ls -la .output
-
-          echo "Output contents:"
-          find .output -maxdepth 3 -type f | head -100
+          echo "Website files:"
+          ls -la .output/public
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
+
+      - name: Upload website
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: ./.output/public
 
   deploy:
     needs: build
