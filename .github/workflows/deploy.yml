@@ -22,6 +22,7 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version: 22
+          cache: npm
 
       - name: Install dependencies
         run: npm install
@@ -29,22 +30,30 @@ jobs:
       - name: Build website
         run: npm run build
 
-      - name: Prepare website for GitHub Pages
+      - name: Prepare GitHub Pages
         run: |
-          echo "Checking build output..."
-          find .output/public -maxdepth 2 -type f
+          echo "===== BUILD OUTPUT ====="
+          find .output/public -maxdepth 3 -type f | sort
 
-          if [ ! -f .output/public/index.html ]; then
-            if [ -f .output/public/_shell.html ]; then
-              cp .output/public/_shell.html .output/public/index.html
-            else
-              echo "ERROR: Neither index.html nor _shell.html exists."
-              exit 1
-            fi
+          echo "===== CHECKING INDEX ====="
+
+          if [ -f ".output/public/index.html" ]; then
+            echo "index.html already exists"
+
+          elif [ -f ".output/public/_shell.html" ]; then
+            echo "Creating index.html from _shell.html"
+            cp ".output/public/_shell.html" ".output/public/index.html"
+
+          else
+            echo "ERROR: No index.html or _shell.html was generated"
+            exit 1
           fi
 
-          echo "Website is ready:"
-          ls -la .output/public
+          echo "===== INDEX.HTML ====="
+          head -50 .output/public/index.html
+
+          echo "===== FINAL FILES ====="
+          find .output/public -maxdepth 2 -type f | sort
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
