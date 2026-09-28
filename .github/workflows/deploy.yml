@@ -29,9 +29,21 @@ jobs:
       - name: Build website
         run: npm run build
 
-      - name: Check build output
+      - name: Prepare website for GitHub Pages
         run: |
-          echo "Website files:"
+          echo "Checking build output..."
+          find .output/public -maxdepth 2 -type f
+
+          if [ ! -f .output/public/index.html ]; then
+            if [ -f .output/public/_shell.html ]; then
+              cp .output/public/_shell.html .output/public/index.html
+            else
+              echo "ERROR: Neither index.html nor _shell.html exists."
+              exit 1
+            fi
+          fi
+
+          echo "Website is ready:"
           ls -la .output/public
 
       - name: Setup Pages
