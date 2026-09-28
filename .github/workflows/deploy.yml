@@ -27,33 +27,51 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Build website
+      - name: Build
         run: npm run build
 
       - name: Prepare GitHub Pages
         run: |
-          echo "===== BUILD OUTPUT ====="
+          echo "===== PUBLIC BUILD ====="
           find .output/public -maxdepth 3 -type f | sort
 
-          echo "===== CHECKING INDEX ====="
+          echo "===== FINDING HTML ====="
 
           if [ -f ".output/public/index.html" ]; then
-            echo "index.html already exists"
+            echo "index.html found"
 
           elif [ -f ".output/public/_shell.html" ]; then
             echo "Creating index.html from _shell.html"
             cp ".output/public/_shell.html" ".output/public/index.html"
 
           else
-            echo "ERROR: No index.html or _shell.html was generated"
+            echo "ERROR: No HTML shell was generated."
             exit 1
           fi
 
-          echo "===== INDEX.HTML ====="
-          head -50 .output/public/index.html
+          echo "===== HTML CONTENT ====="
+          sed -n '1,80p' .output/public/index.html
 
-          echo "===== FINAL FILES ====="
-          find .output/public -maxdepth 2 -type f | sort
+      - name: Fix GitHub Pages paths
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          root = Path(".output/public")
+          index = root / "index.html"
+
+          html = index.read_text()
+
+          html = html.replace('src="/assets/', 'src="./assets/')
+          html = html.replace('href="/assets/', 'href="./assets/')
+          html = html.replace('src="/', 'src="./')
+          html = html.replace('href="/', 'href="./')
+
+          index.write_text(html)
+          PY
+
+          echo "===== FINAL INDEX ====="
+          grep -oE '(src|href)="[^"]+"' .output/public/index.html | head -30 || true
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
@@ -72,6 +90,6 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
-      - name: Deploy to GitHub Pages
+      - name: Deploy
         id: deployment
         uses: actions/deploy-pages@v4
