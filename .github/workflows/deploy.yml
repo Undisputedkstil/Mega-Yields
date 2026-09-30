@@ -51,23 +51,34 @@ jobs:
           from pathlib import Path
 
           root = Path(".output/public")
-          index = root / "index.html"
 
-          html = index.read_text()
+          for file in root.rglob("*"):
+              if not file.is_file():
+                  continue
 
-          html = html.replace('src="/assets/', 'src="./assets/')
-          html = html.replace('href="/assets/', 'href="./assets/')
+              try:
+                  text = file.read_text()
+              except (UnicodeDecodeError, OSError):
+                  continue
 
-          index.write_text(html)
+              original = text
+
+              # Fix absolute asset paths for GitHub Pages
+              text = text.replace('src="/assets/', 'src="./assets/')
+              text = text.replace('href="/assets/', 'href="./assets/')
+              text = text.replace('"/assets/', '"./assets/')
+              text = text.replace("'/assets/", "'./assets/")
+
+              if text != original:
+                  file.write_text(text)
+
+          print("Asset paths fixed across generated website files.")
           PY
 
           cp ".output/public/index.html" ".output/public/404.html"
 
-          echo "===== FINAL INDEX ====="
-          sed -n '1,100p' .output/public/index.html
-
           echo "===== FINAL FILES ====="
-          find .output/public -maxdepth 2 -type f | sort
+          find .output/public -maxdepth 3 -type f | sort
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
