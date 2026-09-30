@@ -37,6 +37,7 @@ jobs:
 
           if [ ! -f ".output/public/index.html" ]; then
             if [ -f ".output/public/_shell.html" ]; then
+              echo "Creating index.html from _shell.html"
               cp ".output/public/_shell.html" ".output/public/index.html"
             else
               echo "ERROR: No index.html or _shell.html found"
@@ -44,9 +45,25 @@ jobs:
             fi
           fi
 
+          echo "===== FIXING ASSET PATHS ====="
+
+          python3 - <<'PY'
+          from pathlib import Path
+
+          root = Path(".output/public")
+          index = root / "index.html"
+
+          html = index.read_text()
+
+          html = html.replace('src="/assets/', 'src="./assets/')
+          html = html.replace('href="/assets/', 'href="./assets/')
+
+          index.write_text(html)
+          PY
+
           cp ".output/public/index.html" ".output/public/404.html"
 
-          echo "===== INDEX ====="
+          echo "===== FINAL INDEX ====="
           sed -n '1,100p' .output/public/index.html
 
           echo "===== FINAL FILES ====="
