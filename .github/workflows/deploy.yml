@@ -35,20 +35,19 @@ jobs:
           echo "===== BUILD OUTPUT ====="
           find .output/public -maxdepth 3 -type f | sort
 
-          if [ -f ".output/public/index.html" ]; then
-            echo "index.html found"
-
-          elif [ -f ".output/public/_shell.html" ]; then
-            echo "Creating index.html from _shell.html"
-            cp ".output/public/_shell.html" ".output/public/index.html"
-
-          else
-            echo "ERROR: No HTML shell was generated."
-            exit 1
+          if [ ! -f ".output/public/index.html" ]; then
+            if [ -f ".output/public/_shell.html" ]; then
+              cp ".output/public/_shell.html" ".output/public/index.html"
+            else
+              echo "ERROR: No index.html or _shell.html found"
+              exit 1
+            fi
           fi
 
-          echo "Creating 404 fallback"
           cp ".output/public/index.html" ".output/public/404.html"
+
+          echo "===== INDEX ====="
+          sed -n '1,100p' .output/public/index.html
 
           echo "===== FINAL FILES ====="
           find .output/public -maxdepth 2 -type f | sort
