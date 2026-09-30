@@ -52,54 +52,57 @@ jobs:
 
           root = Path(".output/public")
 
+          extensions = {
+              ".html",
+              ".js",
+              ".css",
+              ".json",
+              ".map",
+          }
+
           for file in root.rglob("*"):
-              if not file.is_file():
+              if not file.is_file() or file.suffix not in extensions:
                   continue
 
               try:
-                  content = file.read_text(encoding="utf-8")
-              except (UnicodeDecodeError, OSError):
+                  text = file.read_text(encoding="utf-8")
+              except UnicodeDecodeError:
                   continue
 
-              original = content
+              original = text
 
-              # Vite/TanStack normally generates /assets/...
-              # GitHub Pages needs /Mega-Yields/assets/...
-              content = content.replace(
-                  '"/assets/',
-                  '"/Mega-Yields/assets/'
-              )
+              replacements = [
+                  ('"/assets/', '"/Mega-Yields/assets/'),
+                  ("'/assets/", "'/Mega-Yields/assets/"),
+                  ("`/assets/", "`/Mega-Yields/assets/"),
+                  ("(/assets/", "(/Mega-Yields/assets/"),
+                  ("=/assets/", "=/Mega-Yields/assets/"),
+                  (" /assets/", " /Mega-Yields/assets/"),
+              ]
 
-              content = content.replace(
-                  "'/assets/",
-                  "'/Mega-Yields/assets/"
-              )
+              for old, new in replacements:
+                  text = text.replace(old, new)
 
-              content = content.replace(
-                  '=/assets/',
-                  '=/Mega-Yields/assets/'
-              )
-
-              if content != original:
-                  file.write_text(content, encoding="utf-8")
+              if text != original:
+                  file.write_text(text, encoding="utf-8")
                   print(f"Fixed: {file}")
 
-          print("Asset paths have been updated for GitHub Pages.")
           PY
 
-          echo "===== VERIFYING ASSET REFERENCES ====="
+          echo "===== VERIFYING ASSET PATHS ====="
 
-          grep -RhoE '(/Mega-Yields)?/assets/[^"'"'"' )]+' .output/public \
-            | sort -u \
-            | head -100 || true
+          grep -R '"/assets/' .output/public || true
+          grep -R "'/assets/" .output/public || true
 
           echo "===== CREATING 404 FALLBACK ====="
 
           cp ".output/public/index.html" ".output/public/404.html"
 
-          echo "===== FINAL WEBSITE FILES ====="
+          echo "===== FINAL FILES ====="
+          find .output/public -maxdepth 2 -type f | sort
 
-          find .output/public -maxdepth 3 -type f | sort
+          echo "===== FINAL INDEX ====="
+          sed -n '1,100p' .output/public/index.html
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
