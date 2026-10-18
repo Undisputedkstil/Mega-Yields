@@ -15,6 +15,8 @@ export const Route = createFileRoute("/contact")({
       { name: "description", content: DESC },
       { property: "og:title", content: "Contact — MegaYield Farms" },
       { property: "og:description", content: DESC },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
       { property: "og:url", content: `${SITE}/contact` },
     ],
     links: [{ rel: "canonical", href: `${SITE}/contact` }],

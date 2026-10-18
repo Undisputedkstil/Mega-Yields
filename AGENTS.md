@@ -8,3 +8,6 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Keep TanStack Start and use the Vercel Nitro target for external deployments; Lovable's managed target takes precedence so both hosts retain server routes.
+- Prerender only the explicitly listed public content pages; exclude authenticated and request-dependent pages to avoid publishing personal data.

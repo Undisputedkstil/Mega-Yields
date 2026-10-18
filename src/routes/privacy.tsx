@@ -14,6 +14,8 @@ export const Route = createFileRoute("/privacy")({
       },
       { property: "og:title", content: "Privacy Policy — MegaYield Farms" },
       { property: "og:description", content: "Our approach to personal information and data use." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: PrivacyPage,
