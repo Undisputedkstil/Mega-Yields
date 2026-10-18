@@ -14,6 +14,8 @@ export const Route = createFileRoute("/terms")({
       },
       { property: "og:title", content: "Terms & Conditions — MegaYield Farms" },
       { property: "og:description", content: "Website terms of use for MegaYield Farms." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: TermsPage,
