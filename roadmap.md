@@ -1,8 +1,8 @@
 # Vercel deployment
 
 ## Official business update
-- [ ] Apply official business identity, contact links and 2019 establishment consistently.
-- [ ] Unify logo presentation and verify pages.
+- [x] Apply official business identity, contact links and 2019 establishment consistently.
+- [x] Unify logo presentation and verify pages — all eight pages, matching icon, mobile navigation and business data tests passed.
 
 - [x] Audit active pages, server behavior, forms and Cloud usage.
 - [x] Save recoverable configuration and page-source copies.

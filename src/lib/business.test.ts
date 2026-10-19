@@ -1,5 +1,10 @@
-import { describe, expect, test } from "bun:test";
+import { describe, test } from "node:test";
+import { strict as assert } from "node:assert";
 import { business, businessSchema } from "./business";
+
+const expect = (actual: unknown) => ({
+  toBe: (expected: unknown) => assert.equal(actual, expected),
+});
 
 describe("official business information", () => {
   test("establishment is 2019, separate from legal registration", () => {
