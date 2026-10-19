@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
-import logoAsset from "@/assets/megayield-logo.png.asset.json";
+import { BrandLogo } from "@/components/BrandLogo";
+import { business } from "@/lib/business";
 
 const pages = [
   ["/about", "About"],
@@ -11,10 +12,12 @@ const pages = [
 
 export function SiteFooter() {
   return (
-    <footer className="mt-0 bg-[oklch(0.205_0.008_70)] text-[oklch(0.93_0.008_85)]">
+    <footer className="mt-0 bg-ink text-paper">
       <div className="container-x grid gap-12 border-b border-white/10 py-16 md:grid-cols-12">
         <div className="md:col-span-5">
-          <img src={logoAsset.url} alt="MegaYield Farms" className="h-12 w-auto" />
+          <Link to="/" aria-label="MegaYield Farms home"><BrandLogo /></Link>
+          <p className="mt-5 font-display text-xl">{business.slogans[0]}</p>
+          <p className="mt-1 text-sm text-paper/60">{business.slogans[1]}</p>
           <p className="mt-6 max-w-sm text-sm leading-relaxed text-white/60">
             MegaYield Farms is an early-stage South African agricultural enterprise developing a
             scalable fresh-produce operation, with chilli peppers and tomatoes at the centre of
@@ -39,8 +42,8 @@ export function SiteFooter() {
           <h2 className="eyebrow text-white/45">Contact</h2>
           <ul className="mt-5 space-y-2.5 text-sm text-white/75">
             <li>
-              <a href="tel:+27604865455" className="hover:opacity-60">
-                060 486 5455
+              <a href={business.phoneHref} className="hover:opacity-60">
+                {business.phone}
               </a>
             </li>
             <li>
@@ -49,7 +52,7 @@ export function SiteFooter() {
               </a>
             </li>
             <li className="text-white/55">
-              Plot 787 Ten Morgan, Winterveld
+              Winterveldt
               <br />
               Pretoria, Gauteng, South Africa
             </li>
@@ -59,7 +62,7 @@ export function SiteFooter() {
       </div>
 
       <div className="container-x flex flex-col gap-3 py-6 font-mono text-[0.6875rem] uppercase tracking-[0.12em] text-white/40 md:flex-row md:items-center md:justify-between">
-        <span>© {new Date().getFullYear()} MegaYield Farms (Pty) Ltd · CIPC 2025/964922/07</span>
+        <span className="max-w-xl leading-relaxed">© {new Date().getFullYear()} {business.tradingName}<br />{business.legalName} · Reg. {business.registrationNumber}</span>
         <div className="flex flex-wrap gap-x-6 gap-y-2">
           <Link to="/privacy" className="hover:text-white/70">
             Privacy
@@ -67,7 +70,7 @@ export function SiteFooter() {
           <Link to="/terms" className="hover:text-white/70">
             Terms
           </Link>
-          <span>megayieldfarms.co.za</span>
+          <a href={business.website} className="hover:opacity-60">www.megayieldfarms.co.za</a>
         </div>
       </div>
     </footer>
