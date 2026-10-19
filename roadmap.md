@@ -1,5 +1,9 @@
 # Vercel deployment
 
+## Official business update
+- [ ] Apply official business identity, contact links and 2019 establishment consistently.
+- [ ] Unify logo presentation and verify pages.
+
 - [x] Audit active pages, server behavior, forms and Cloud usage.
 - [x] Save recoverable configuration and page-source copies.
 - [x] Add the supported Vercel target and explicit public-page prerendering.
