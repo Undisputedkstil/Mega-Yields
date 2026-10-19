@@ -5,7 +5,7 @@ import { PageHeader } from "@/components/PageHeader";
 import { InquiryForm } from "@/components/InquiryForm";
 import farmAerial from "@/assets/farm-aerial.jpg";
 
-const SITE = "https://megayieldfarms.co.za";
+const SITE = "https://awesome-site-quest.lovable.app";
 const DESC =
   "MegaYield Farms works with commercial buyers, strategic agricultural partners, investment partners and development organisations across South Africa.";
 
@@ -59,7 +59,7 @@ function PartnershipsPage() {
           intro="Our growth depends on the organisations we work with. Below are the four relationships that matter most to MegaYield Farms at this stage."
           image={farmAerial}
           imageAlt="Fields under production at MegaYield Farms"
-          caption="Winterveld, Pretoria — Gauteng, South Africa"
+          caption="Winterveldt, Pretoria — Gauteng, South Africa"
         />
 
         <section className="border-b border-border">

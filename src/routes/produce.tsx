@@ -17,7 +17,7 @@ import cabbageImg from "@/assets/pilot-cabbage.jpg";
 import shadeTomatoes from "@/assets/pilot-tomatoes-shade.jpg";
 import seedlingsImg from "@/assets/pilot-seedlings.jpg";
 
-const SITE = "https://megayieldfarms.co.za";
+const SITE = "https://awesome-site-quest.lovable.app";
 const DESC =
   "Six commercial crops grown for fresh supply in Gauteng — chilli peppers, tomatoes, green peppers, colour peppers, onions and carrots — with six further crops under development. Contact MegaYield Farms for availability.";
 

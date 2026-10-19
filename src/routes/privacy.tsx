@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { SiteNav } from "@/components/SiteNav";
 import { SiteFooter } from "@/components/SiteFooter";
 import { PageHeader } from "@/components/PageHeader";
+import { business } from "@/lib/business";
 
 export const Route = createFileRoute("/privacy")({
   head: () => ({
@@ -16,7 +17,9 @@ export const Route = createFileRoute("/privacy")({
       { property: "og:description", content: "Our approach to personal information and data use." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:url", content: "https://awesome-site-quest.lovable.app/privacy" },
     ],
+    links: [{ rel: "canonical", href: "https://awesome-site-quest.lovable.app/privacy" }],
   }),
   component: PrivacyPage,
 });
@@ -44,7 +47,7 @@ const sections = [
   },
   {
     h: "Contact",
-    p: "Questions about this policy can be directed to MegaYield Farms (Pty) Ltd, Plot 787 Ten Morgan, Winterveld, Pretoria, Gauteng, South Africa.",
+    p: `Questions about this policy can be directed to ${business.legalName}, trading as ${business.tradingName}, ${business.operatingArea}.`,
   },
 ];
 

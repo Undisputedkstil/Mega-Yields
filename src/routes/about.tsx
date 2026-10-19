@@ -4,10 +4,11 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { PageHeader } from "@/components/PageHeader";
 import farmAerial from "@/assets/farm-aerial.jpg";
 import handsImg from "@/assets/harvest-hands.jpg";
+import { business } from "@/lib/business";
 
-const SITE = "https://megayieldfarms.co.za";
+const SITE = "https://awesome-site-quest.lovable.app";
 const DESC =
-  "MegaYield Farms (Pty) Ltd is an early-stage agricultural enterprise in Gauteng, South Africa, growing chilli peppers and tomatoes for commercial fresh-produce supply.";
+  "MegaYield Farms, established in 2019, is an agricultural enterprise in Winterveldt, Pretoria, Gauteng, South Africa, growing vegetables for commercial fresh-produce supply.";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -44,14 +45,18 @@ const leadership = [
 ];
 
 const companyInfo: [string, string][] = [
-  ["Registered name", "MegaYield Farms (Pty) Ltd"],
-  ["Registration number", "CIPC 2025/964922/07"],
+  ["Trading name", business.tradingName],
+  ["Registered legal entity", business.legalName],
+  ["Registration number", business.registrationNumber],
+  ["Established", String(business.established)],
   ["Country", "South Africa"],
   ["Province", "Gauteng"],
   ["Sector", "Agriculture — fresh produce"],
   ["Current crops", "Chilli peppers, tomatoes, pilot crops"],
-  ["Location", "Plot 787 Ten Morgan, Winterveld, Pretoria"],
-  ["Contact", "hello@megayieldfarms.co.za · 060 486 5455"],
+  ["Operating area", business.operatingArea],
+  ["Website", business.website],
+  ["Email", business.email],
+  ["Telephone", business.phone],
 ];
 
 function AboutPage() {
@@ -64,14 +69,14 @@ function AboutPage() {
           title="An agricultural business being built in the open."
           intro="MegaYield Farms is an early-stage South African agricultural enterprise. We grow and supply fresh produce today, and we are honest about what we are still building."
           image={farmAerial}
-          imageAlt="Planted fields at MegaYield Farms in Winterveld, Gauteng"
-          caption="Winterveld, Pretoria — Gauteng, South Africa"
+          imageAlt="Planted fields at MegaYield Farms in Winterveldt, Gauteng"
+          caption="Winterveldt, Pretoria — Gauteng, South Africa"
         />
 
         <Section number="01" title="Our Story">
           <div className="space-y-5 text-[0.9375rem] leading-relaxed text-muted-foreground">
             <p>
-              MegaYield Farms began with a small planted area, a mentor, and a conviction that South
+              Established in 2019, MegaYield Farms began with a small planted area, a mentor, and a conviction that South
               Africa needs more young, disciplined commercial growers. We started with chilli
               peppers because the crop rewards attention: it demands consistent irrigation, careful
               scouting and disciplined harvesting.
@@ -157,10 +162,14 @@ function AboutPage() {
             <tbody>
               {companyInfo.map(([k, v]) => (
                 <tr key={k} className="border-t border-border align-top">
-                  <th scope="row" className="w-56 py-3.5 pr-6 font-mono text-[0.6875rem] font-medium uppercase tracking-[0.12em] text-muted-foreground">
+                  <th scope="row" className="w-1/3 py-3.5 pr-4 font-mono text-[0.6875rem] font-medium uppercase tracking-[0.12em] text-muted-foreground">
                     {k}
                   </th>
-                  <td className="py-3.5">{v}</td>
+                  <td className="break-words py-3.5 [overflow-wrap:anywhere]">
+                    {k === "Website" ? <a href={business.website} className="underline">{v}</a> :
+                     k === "Email" ? <a href={`mailto:${business.email}`} className="underline">{v}</a> :
+                     k === "Telephone" ? <a href={business.phoneHref} className="underline">{v}</a> : v}
+                  </td>
                 </tr>
               ))}
             </tbody>

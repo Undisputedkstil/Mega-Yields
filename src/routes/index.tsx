@@ -9,8 +9,9 @@ import produceTomatoes from "@/assets/produce-tomatoes.jpg";
 import pilotSeedlings from "@/assets/pilot-seedlings.jpg";
 import opsIrrigation from "@/assets/ops-irrigation.jpg";
 import harvestHands from "@/assets/harvest-hands.jpg";
+import { business } from "@/lib/business";
 
-const SITE = "https://megayieldfarms.co.za";
+const SITE = "https://awesome-site-quest.lovable.app";
 
 const DESCRIPTION =
   "MegaYield Farms is a South African agricultural enterprise developing a scalable fresh-produce operation, with chilli peppers and tomatoes at the centre of its current production strategy.";
@@ -71,7 +72,8 @@ export const Route = createFileRoute("/")({
           url: SITE,
           publisher: {
             "@type": "Organization",
-            name: "MegaYield Farms (Pty) Ltd",
+            name: business.tradingName,
+            legalName: business.legalName,
           },
         }),
       },
@@ -186,7 +188,7 @@ function HomePage() {
           <div className="absolute inset-0 flex items-end">
             <div className="container-x w-full pb-14 md:pb-20">
               <p className="eyebrow text-white/70">
-                South Africa · Fresh Produce · Est. 2024
+                South Africa · Fresh Produce · Est. {business.established}
               </p>
 
               <h1 className="mt-5 max-w-4xl display-xl text-white">
