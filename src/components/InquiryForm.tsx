@@ -1,4 +1,5 @@
 import { useState, type FormEvent } from "react";
+import { business } from "@/lib/business";
 
 interface Props {
   defaultInquiry?: string;
@@ -33,7 +34,7 @@ export function InquiryForm({ defaultInquiry = "General enquiry", compact = fals
         <h3 className="mt-3 font-display text-2xl">Thank you — your message is with our team.</h3>
         <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
           We reply to enquiries within one business day. For urgent supply matters, call
-          060&nbsp;486&nbsp;5455.
+          {" "}<a href={business.phoneHref} className="underline">{business.phone}</a>.
         </p>
       </div>
     );

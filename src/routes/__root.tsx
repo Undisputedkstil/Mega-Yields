@@ -11,6 +11,7 @@ import { useEffect, type ReactNode } from "react";
 import { Toaster } from "@/components/ui/sonner";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { business, businessSchema } from "@/lib/business";
 
 /**
  * If someone visits a route that doesn't exist,
@@ -108,7 +109,7 @@ export const Route =
         },
         {
           name: "author",
-          content: "MegaYield Farms (Pty) Ltd",
+          content: business.tradingName,
         },
         {
           name: "description",
@@ -139,6 +140,7 @@ export const Route =
       ],
 
       links: [
+        { rel: "icon", type: "image/png", href: "/favicon.png" },
         {
           rel: "stylesheet",
           href: appCss,
@@ -162,14 +164,7 @@ export const Route =
       scripts: [
         {
           type: "application/ld+json",
-          children: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Organization",
-            name: "MegaYield Farms (Pty) Ltd",
-            url: "https://megayieldfarms.co.za",
-            description:
-              "South African agricultural company growing chilli peppers, tomatoes and pilot crops for commercial fresh-produce supply.",
-          }),
+          children: JSON.stringify(businessSchema),
         },
       ],
     }),

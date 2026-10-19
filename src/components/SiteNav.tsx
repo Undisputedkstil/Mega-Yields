@@ -1,7 +1,9 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
-import logoAsset from "@/assets/megayield-logo.png.asset.json";
+import { BrandLogo } from "@/components/BrandLogo";
+import { business } from "@/lib/business";
+import { Button } from "@/components/ui/button";
 
 const links = [
   { to: "/", label: "Home" },
@@ -41,14 +43,7 @@ export function SiteNav({ overlay = false }: Props) {
     >
       <div className="container-x flex h-16 items-center justify-between gap-6">
         <Link to="/" className="flex min-w-0 items-center gap-3" onClick={() => setOpen(false)}>
-          <img
-            src={logoAsset.url}
-            alt="MegaYield Farms"
-            className={`h-9 w-auto shrink-0 ${light ? "brightness-0 invert" : ""}`}
-          />
-          <span className="hidden font-display text-lg leading-none tracking-tight sm:block">
-            MegaYield&nbsp;Farms
-          </span>
+          <BrandLogo />
         </Link>
 
         <nav className="hidden items-center gap-7 lg:flex">
@@ -70,19 +65,19 @@ export function SiteNav({ overlay = false }: Props) {
 
         <div className="flex shrink-0 items-center gap-4">
           <a
-            href="tel:+27604865455"
+            href={business.phoneHref}
             className="hidden font-mono text-xs tracking-wide md:inline hover:opacity-60"
           >
-            060 486 5455
+            {business.phone}
           </a>
-          <button
-            className="p-1 lg:hidden"
+          <Button variant="ghost" size="icon"
+            className="lg:hidden"
             onClick={() => setOpen((v) => !v)}
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
           >
             {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-          </button>
+          </Button>
         </div>
       </div>
 

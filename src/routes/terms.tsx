@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { SiteNav } from "@/components/SiteNav";
 import { SiteFooter } from "@/components/SiteFooter";
 import { PageHeader } from "@/components/PageHeader";
+import { business } from "@/lib/business";
 
 export const Route = createFileRoute("/terms")({
   head: () => ({
@@ -16,7 +17,9 @@ export const Route = createFileRoute("/terms")({
       { property: "og:description", content: "Website terms of use for MegaYield Farms." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:url", content: "https://awesome-site-quest.lovable.app/terms" },
     ],
+    links: [{ rel: "canonical", href: "https://awesome-site-quest.lovable.app/terms" }],
   }),
   component: TermsPage,
 });
@@ -24,7 +27,7 @@ export const Route = createFileRoute("/terms")({
 const sections = [
   {
     h: "Use of this website",
-    p: "This website is provided for general information about MegaYield Farms (Pty) Ltd and its fresh produce operations. By using it you agree to these terms.",
+    p: `This website is provided for general information about ${business.legalName}, trading as ${business.tradingName}, and its fresh produce operations. By using it you agree to these terms.`,
   },
   {
     h: "Information accuracy",
@@ -36,7 +39,7 @@ const sections = [
   },
   {
     h: "Intellectual property",
-    p: "The MegaYield Farms name, logo, photography and website content remain the property of MegaYield Farms (Pty) Ltd and may not be reproduced without permission.",
+    p: `The MegaYield Farms name, logo, photography and website content remain the property of ${business.legalName} and may not be reproduced without permission.`,
   },
   {
     h: "Liability",

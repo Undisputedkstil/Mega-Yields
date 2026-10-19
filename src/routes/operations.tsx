@@ -7,7 +7,7 @@ import opsPacking from "@/assets/ops-packing.jpg";
 import soilImg from "@/assets/sustainability-soil.jpg";
 import handsImg from "@/assets/harvest-hands.jpg";
 
-const SITE = "https://megayieldfarms.co.za";
+const SITE = "https://awesome-site-quest.lovable.app";
 const DESC =
   "How MegaYield Farms plans, plants, irrigates, harvests and supplies fresh produce in Gauteng — and how those systems are being refined as the operation grows.";
 

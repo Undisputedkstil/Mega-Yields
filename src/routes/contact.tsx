@@ -3,10 +3,11 @@ import { SiteNav } from "@/components/SiteNav";
 import { SiteFooter } from "@/components/SiteFooter";
 import { PageHeader } from "@/components/PageHeader";
 import { InquiryForm } from "@/components/InquiryForm";
+import { business, businessSchema } from "@/lib/business";
 
-const SITE = "https://megayieldfarms.co.za";
+const SITE = "https://awesome-site-quest.lovable.app";
 const DESC =
-  "Contact MegaYield Farms for supply enquiries, partnerships and general questions. Winterveld, Pretoria, Gauteng — hello@megayieldfarms.co.za, 060 486 5455.";
+  `Contact MegaYield Farms for supply enquiries, partnerships and general questions. ${business.operatingArea} — ${business.email}, ${business.phone}.`;
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -23,21 +24,7 @@ export const Route = createFileRoute("/contact")({
     scripts: [
       {
         type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "Organization",
-          name: "MegaYield Farms (Pty) Ltd",
-          url: SITE,
-          email: "hello@megayieldfarms.co.za",
-          telephone: "+27604865455",
-          address: {
-            "@type": "PostalAddress",
-            streetAddress: "Plot 787 Ten Morgan, Winterveld",
-            addressLocality: "Pretoria",
-            addressRegion: "Gauteng",
-            addressCountry: "ZA",
-          },
-        }),
+        children: JSON.stringify(businessSchema),
       },
     ],
   }),
@@ -45,11 +32,15 @@ export const Route = createFileRoute("/contact")({
 });
 
 const details: [string, string, string?][] = [
-  ["Email", "hello@megayieldfarms.co.za", "mailto:hello@megayieldfarms.co.za"],
-  ["Phone", "060 486 5455", "tel:+27604865455"],
-  ["Farm", "Plot 787 Ten Morgan, Winterveld, Pretoria"],
+  ["Email", business.email, `mailto:${business.email}`],
+  ["Additional email", business.additionalEmail, `mailto:${business.additionalEmail}`],
+  ["Phone", business.phone, business.phoneHref],
+  ["Operating area", business.operatingArea],
   ["Province", "Gauteng, South Africa"],
-  ["Registration", "MegaYield Farms (Pty) Ltd · 2025/964922/07"],
+  ["Website", business.website, business.website],
+  ["Registered legal entity", business.legalName],
+  ["Registration", business.registrationNumber],
+  ["Established", String(business.established)],
 ];
 
 function ContactPage() {
@@ -71,7 +62,7 @@ function ContactPage() {
                 {details.map(([label, value, href]) => (
                   <div key={label} className="border-t border-border py-4">
                     <dt className="eyebrow">{label}</dt>
-                    <dd className="mt-1.5 text-[0.9375rem]">
+                    <dd className="mt-1.5 break-words text-[0.9375rem] [overflow-wrap:anywhere]">
                       {href ? (
                         <a href={href} className="link-rule">
                           {value}
