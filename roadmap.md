@@ -4,5 +4,5 @@
 - [x] Save recoverable configuration and page-source copies.
 - [x] Add the supported Vercel target and explicit public-page prerendering.
 - [x] Document Vercel settings, recovery and existing form limitations.
-- [ ] Verify local navigation, refreshes, images and automatic build output.
+- [x] Verify local navigation, refreshes, images and automatic build output — eight pages and sitemap passed, no browser errors; automatic build reports OK.
 - [ ] Verify an actual Vercel deployment — blocked by missing deployment URL, build logs and account access.
